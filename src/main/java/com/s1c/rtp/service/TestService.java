@@ -1,11 +1,14 @@
 package com.s1c.rtp.service;
 
+import com.s1c.rtp.dto.Test2dto;
 import com.s1c.rtp.entity.TestEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.s1c.rtp.repository.TestRepository;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -17,5 +20,153 @@ public class TestService {
     @Transactional
     public List<TestEntity> getAllTestList() {
         return testRepository.findAll();
+    }
+
+
+    @Transactional
+    public List<Test2dto> getAllTest2dtoList() {
+
+        String keyword1 = "COVID19";
+        HashMap<String, Double> age1 = new HashMap<String, Double>();
+        HashMap<String, Double> gender1 = new HashMap<String, Double>();
+        HashMap<String, Double> sentiment1 = new HashMap<String, Double>();
+        List<String> tag1 = new ArrayList<>();
+        age1.put("10", 0.05);
+        age1.put("20", 0.05);
+        age1.put("30", 0.2);
+        age1.put("40", 0.4);
+        age1.put("50", 0.2);
+        age1.put("60", 0.1);
+        gender1.put("male", 0.7);
+        gender1.put("female", 0.3);
+        sentiment1.put("positive", 0.2);
+        sentiment1.put("negative", 0.8);
+        String summary1 = "이번주 코로나19 확진자가 지난주에= 비해 크게 증가하여 정부가 강력하고 효과적인 방역대책을 고심하고 있다.";
+        tag1.add("꾸준한");
+        tag1.add("중년층");
+        tag1.add("자투리시간");
+        tag1.add("비판적");
+
+        String keyword2 = "정치보복";
+        HashMap<String, Double> age2 = new HashMap<String, Double>();
+        HashMap<String, Double> gender2 = new HashMap<String, Double>();
+        HashMap<String, Double> sentiment2 = new HashMap<String, Double>();
+        List<String> tag2 = new ArrayList<>();
+        age2.put("10", 0.05);
+        age2.put("20", 0.2);
+        age2.put("30", 0.05);
+        age2.put("40", 0.2);
+        age2.put("50", 0.4);
+        age2.put("60", 0.1);
+        gender2.put("male", 0.9);
+        gender2.put("female", 0.1);
+        sentiment2.put("positive", 0.1);
+        sentiment2.put("negative", 0.9);
+        String summary2 = "이번 주 대선과 관련해서 정치보복 수사라는 의혹이 제기되고 있다";
+        tag2.add("정치");
+        tag2.add("여당");
+        tag2.add("야당");
+        tag2.add("비판적");
+
+        String keyword3 = "대선";
+        HashMap<String, Double> age3 = new HashMap<String, Double>();
+        HashMap<String, Double> gender3 = new HashMap<String, Double>();
+        HashMap<String, Double> sentiment3 = new HashMap<String, Double>();
+        List<String> tag3 = new ArrayList<>();
+        age3.put("10", 0.08);
+        age3.put("20", 0.22);
+        age3.put("30", 0.05);
+        age3.put("40", 0.4);
+        age3.put("50", 0.2);
+        age3.put("60", 0.1);
+        gender3.put("male", 0.5);
+        gender3.put("female", 0.5);
+        sentiment3.put("positive", 0.3);
+        sentiment3.put("negative", 0.7);
+        String summary3 = "대통령 선거가 4개월 앞으로 다가와 치열한 경선이 진행중이다.";
+        tag3.add("대통령");
+        tag3.add("대선");
+        tag3.add("민주주의");
+        tag3.add("토론");
+
+        String keyword4 = "백신";
+        HashMap<String, Double> age4 = new HashMap<String, Double>();
+        HashMap<String, Double> gender4 = new HashMap<String, Double>();
+        HashMap<String, Double> sentiment4 = new HashMap<String, Double>();
+        List<String> tag4 = new ArrayList<>();
+        age4.put("10", 0.15);
+        age4.put("20", 0.1);
+        age4.put("30", 0.15);
+        age4.put("40", 0.35);
+        age4.put("50", 0.1);
+        age4.put("60", 0.15);
+        gender4.put("male", 0.6);
+        gender4.put("female", 0.4);
+        sentiment4.put("positive", 0.6);
+        sentiment4.put("negative", 0.4);
+        String summary4 = "1차 백신접종률이 70%를 넘음에 따라 대한민국의 COVID 백신 접종률이 세계 60위를 기록하였다.";
+        tag4.add("백신");
+        tag4.add("코로나");
+        tag4.add("예방접종");
+        tag4.add("부작용");
+
+        String keyword5 = "단풍";
+        HashMap<String, Double> age5 = new HashMap<String, Double>();
+        HashMap<String, Double> gender5 = new HashMap<String, Double>();
+        HashMap<String, Double> sentiment5 = new HashMap<String, Double>();
+        List<String> tag5 = new ArrayList<>();
+        age5.put("10", 0.1);
+        age5.put("20", 0.15);
+        age5.put("30", 0.35);
+        age5.put("40", 0.15);
+        age5.put("50", 0.1);
+        age5.put("60", 0.15);
+        gender5.put("male", 0.3);
+        gender5.put("female", 0.7);
+        sentiment5.put("positive", 0.8);
+        sentiment5.put("negative", 0.2);
+        String summary5 = "가을을 맞이하여 수락산에 단풍이 피었으며 단풍을 구경하기위해 나들이객이 많이 방문하였다.";
+        tag5.add("가을");
+        tag5.add("단풍");
+        tag5.add("관광");
+        tag5.add("사회적거리두기");
+
+        String keyword6 = "메타버스";
+        HashMap<String, Double> age6 = new HashMap<String, Double>();
+        HashMap<String, Double> gender6 = new HashMap<String, Double>();
+        HashMap<String, Double> sentiment6 = new HashMap<String, Double>();
+        List<String> tag6 = new ArrayList<>();
+        age6.put("10", 0.35);
+        age6.put("20", 0.15);
+        age6.put("30", 0.1);
+        age6.put("40", 0.15);
+        age6.put("50", 0.15);
+        age6.put("60", 0.1);
+        gender6.put("male", 0.9);
+        gender6.put("female", 0.1);
+        sentiment6.put("positive", 0.9);
+        sentiment6.put("negative", 0.1);
+        String summary6 = "국내 첫 메타버스 ETF가 상장예고하였으며 많은 시장관계자의 주목을 받고 있다.";
+        tag6.add("메타버스");
+        tag6.add("네이버");
+        tag6.add("하이브");
+        tag6.add("ETF");
+
+        Test2dto test1 = new Test2dto(keyword1, age1, gender1, sentiment1, summary1, tag1);
+        Test2dto test2 = new Test2dto(keyword2, age2, gender2, sentiment2, summary2, tag2);
+        Test2dto test3 = new Test2dto(keyword3, age3, gender3, sentiment3, summary3, tag3);
+        Test2dto test4 = new Test2dto(keyword4, age4, gender4, sentiment4, summary4, tag4);
+        Test2dto test5 = new Test2dto(keyword5, age5, gender5, sentiment5, summary5, tag5);
+        Test2dto test6 = new Test2dto(keyword6, age6, gender6, sentiment6, summary6, tag6);
+
+        List<Test2dto> test2dtoList = new ArrayList<>();
+        test2dtoList.add(test1);
+        test2dtoList.add(test2);
+        test2dtoList.add(test3);
+        test2dtoList.add(test4);
+        test2dtoList.add(test5);
+        test2dtoList.add(test6);
+
+        return test2dtoList;
     }
 }
