@@ -26,6 +26,7 @@ public class TestService {
     @Transactional
     public List<Test2dto> getAllTest2dtoList() {
 
+        int id1 = 1;
         String keyword1 = "COVID19";
         HashMap<String, Double> age1 = new HashMap<String, Double>();
         HashMap<String, Double> gender1 = new HashMap<String, Double>();
@@ -47,6 +48,7 @@ public class TestService {
         tag1.add("자투리시간");
         tag1.add("비판적");
 
+        int id2 = 2;
         String keyword2 = "정치보복";
         HashMap<String, Double> age2 = new HashMap<String, Double>();
         HashMap<String, Double> gender2 = new HashMap<String, Double>();
@@ -68,6 +70,7 @@ public class TestService {
         tag2.add("야당");
         tag2.add("비판적");
 
+        int id3 = 3;
         String keyword3 = "대선";
         HashMap<String, Double> age3 = new HashMap<String, Double>();
         HashMap<String, Double> gender3 = new HashMap<String, Double>();
@@ -89,6 +92,7 @@ public class TestService {
         tag3.add("민주주의");
         tag3.add("토론");
 
+        int id4 = 4;
         String keyword4 = "백신";
         HashMap<String, Double> age4 = new HashMap<String, Double>();
         HashMap<String, Double> gender4 = new HashMap<String, Double>();
@@ -110,6 +114,7 @@ public class TestService {
         tag4.add("예방접종");
         tag4.add("부작용");
 
+        int id5 = 5;
         String keyword5 = "단풍";
         HashMap<String, Double> age5 = new HashMap<String, Double>();
         HashMap<String, Double> gender5 = new HashMap<String, Double>();
@@ -131,6 +136,7 @@ public class TestService {
         tag5.add("관광");
         tag5.add("사회적거리두기");
 
+        int id6 = 6;
         String keyword6 = "메타버스";
         HashMap<String, Double> age6 = new HashMap<String, Double>();
         HashMap<String, Double> gender6 = new HashMap<String, Double>();
@@ -152,12 +158,12 @@ public class TestService {
         tag6.add("하이브");
         tag6.add("ETF");
 
-        Test2dto test1 = new Test2dto(keyword1, age1, gender1, sentiment1, summary1, tag1);
-        Test2dto test2 = new Test2dto(keyword2, age2, gender2, sentiment2, summary2, tag2);
-        Test2dto test3 = new Test2dto(keyword3, age3, gender3, sentiment3, summary3, tag3);
-        Test2dto test4 = new Test2dto(keyword4, age4, gender4, sentiment4, summary4, tag4);
-        Test2dto test5 = new Test2dto(keyword5, age5, gender5, sentiment5, summary5, tag5);
-        Test2dto test6 = new Test2dto(keyword6, age6, gender6, sentiment6, summary6, tag6);
+        Test2dto test1 = new Test2dto(id1, keyword1, age1, gender1, sentiment1, summary1, tag1);
+        Test2dto test2 = new Test2dto(id2, keyword2, age2, gender2, sentiment2, summary2, tag2);
+        Test2dto test3 = new Test2dto(id3, keyword3, age3, gender3, sentiment3, summary3, tag3);
+        Test2dto test4 = new Test2dto(id4, keyword4, age4, gender4, sentiment4, summary4, tag4);
+        Test2dto test5 = new Test2dto(id5, keyword5, age5, gender5, sentiment5, summary5, tag5);
+        Test2dto test6 = new Test2dto(id6, keyword6, age6, gender6, sentiment6, summary6, tag6);
 
         List<Test2dto> test2dtoList = new ArrayList<>();
         test2dtoList.add(test1);

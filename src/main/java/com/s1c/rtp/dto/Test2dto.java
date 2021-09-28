@@ -11,6 +11,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 public class Test2dto {
+    int id;
     String keyword;
     HashMap<String, Double> age;
     HashMap<String, Double> gender;
@@ -18,7 +19,8 @@ public class Test2dto {
     String summary;
     List<String> tag;
 
-    public Test2dto(String keyword, HashMap<String, Double> age, HashMap<String, Double> gender, HashMap<String, Double> sentiment, String summary, List<String> tag) {
+    public Test2dto(int id,String keyword, HashMap<String, Double> age, HashMap<String, Double> gender, HashMap<String, Double> sentiment, String summary, List<String> tag) {
+        this.id = id;
         this.keyword = keyword;
         this.age = age;
         this.gender = gender;
