@@ -1,4 +1,9 @@
 package com.s1c.rtp.repository;
 
-public interface NewsRepository {
+import com.s1c.rtp.entity.news;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+public interface NewsRepository extends JpaRepository<news, Integer>{
 }
