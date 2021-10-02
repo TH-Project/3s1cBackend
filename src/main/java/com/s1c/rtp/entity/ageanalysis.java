@@ -42,10 +42,6 @@ public class ageanalysis {
         }
     }
 
-    public ageanalysis() {
-
-    }
-
     public void changeNews(news news_age){
         this.news_age = news_age;
         news_age.getAgeanalyses().add(this);

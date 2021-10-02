@@ -35,10 +35,6 @@ public class genderanalysis {
         }
     }
 
-    public genderanalysis() {
-
-    }
-
     public void changeNews(news news_gender){
         this.news_gender = news_gender;
         news_gender.getGenderanalyses().add(this);

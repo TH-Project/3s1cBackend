@@ -42,10 +42,6 @@ public class comments {
         }
     }
 
-    public comments() {
-
-    }
-
     public void changeNews(news news_comments){
         this.news_comments = news_comments;
         news_comments.getCommentses().add(this);

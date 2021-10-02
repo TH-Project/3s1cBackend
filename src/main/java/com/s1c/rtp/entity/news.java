@@ -43,7 +43,4 @@ public class news {
         this.date = date;
     }
 
-    public news() {
-
-    }
 }
