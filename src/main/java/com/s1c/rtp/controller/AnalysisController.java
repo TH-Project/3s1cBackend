@@ -3,6 +3,7 @@ package com.s1c.rtp.controller;
 import java.util.Arrays;
 import java.util.List;
 
+import com.s1c.rtp.dto.GenderDto;
 import com.s1c.rtp.entity.genderanalysis;
 import com.s1c.rtp.entity.news;
 import com.s1c.rtp.repository.NewsRepository;
@@ -36,4 +37,11 @@ public class AnalysisController {
         List<genderanalysis> results = genderRepository.findAll();
         return results;
     }
+
+    @GetMapping("/real-time-popularity/genderDto/all")
+    public List<GenderDto> retrieveAllGenderDto(){
+        List<GenderDto> genderDtoList = genderRepository.findGenderDto();
+        return genderDtoList;
+    }
+
 }
