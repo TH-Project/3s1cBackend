@@ -28,4 +28,26 @@ public class comments {
     private int recommended;
     private int unrecommended;
     private Timestamp date;
+
+    public comments(int commentsId, String contents, String writer, int recommended, int unrecommended, Timestamp date, news news_comments){
+        this.commentsId = commentsId;
+        this.contents = contents;
+        this.writer = writer;
+        this.recommended = recommended;
+        this.unrecommended = unrecommended;
+        this.date = date;
+
+        if (news_comments!=null){
+            changeNews(news_comments);
+        }
+    }
+
+    public comments() {
+
+    }
+
+    public void changeNews(news news_comments){
+        this.news_comments = news_comments;
+        news_comments.getCommentses().add(this);
+    }
 }

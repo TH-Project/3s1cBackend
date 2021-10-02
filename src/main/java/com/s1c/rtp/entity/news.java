@@ -35,4 +35,15 @@ public class news {
 //    @JsonIgnore
     @OneToMany(mappedBy = "news_gender")
     private List<genderanalysis> genderanalyses = new ArrayList<>();
+
+    public news(int newsId, String title, String url, Timestamp date){
+        this.newsId = newsId;
+        this.title = title;
+        this.url = url;
+        this.date = date;
+    }
+
+    public news() {
+
+    }
 }

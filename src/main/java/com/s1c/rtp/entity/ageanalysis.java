@@ -28,4 +28,26 @@ public class ageanalysis {
     private double fourties;
     private double fifties;
     private double sixties;
+
+    public ageanalysis(int ageId, double tens, double twenties, double thirties, double fourties, double fifties, double sixties, news news_age){
+        this.ageId = ageId;
+        this.tens = tens;
+        this.twenties = twenties;
+        this.thirties = thirties;
+        this.fourties = fourties;
+        this.fifties = fifties;
+        this.sixties = sixties;
+        if (news_age!=null){
+            changeNews(news_age);
+        }
+    }
+
+    public ageanalysis() {
+
+    }
+
+    public void changeNews(news news_age){
+        this.news_age = news_age;
+        news_age.getAgeanalyses().add(this);
+    }
 }

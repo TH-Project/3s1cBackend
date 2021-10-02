@@ -25,4 +25,22 @@ public class genderanalysis {
 
     private double male;
     private double female;
+
+    public genderanalysis(int genderId, double male, double female, news news_gender){
+        this.genderId = genderId;
+        this.male = male;
+        this.female = female;
+        if (news_gender!=null){
+            changeNews(news_gender);
+        }
+    }
+
+    public genderanalysis() {
+
+    }
+
+    public void changeNews(news news_gender){
+        this.news_gender = news_gender;
+        news_gender.getGenderanalyses().add(this);
+    }
 }
