@@ -1,5 +1,6 @@
 package com.s1c.rtp.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -18,6 +19,7 @@ public class ageanalysis {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "news_id")
+    @JsonIgnore
     private news news_age;
 
     private double tens;

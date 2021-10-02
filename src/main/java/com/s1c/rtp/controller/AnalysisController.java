@@ -32,7 +32,7 @@ public class AnalysisController {
 
     @GetMapping("/real-time-popularity/gender/all")
     public List<genderanalysis> retrieveAllGender(){
-        List<genderanalysis> result = genderRepository.findAll();
-        return result;
+        List<genderanalysis> results = genderRepository.findAll();
+        return results;
     }
 }

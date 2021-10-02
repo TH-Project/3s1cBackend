@@ -1,6 +1,7 @@
 package com.s1c.rtp.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
@@ -10,6 +11,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString(of= {"genderId", "male", "female"})
+//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class genderanalysis {
 
     @Id
@@ -20,6 +22,7 @@ public class genderanalysis {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "news_id")
+    @JsonIgnore
     private news news_gender;
 
     private double male;
