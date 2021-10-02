@@ -24,15 +24,15 @@ public class news {
     private String url;
     private Timestamp date;
 
-    @JsonIgnore
+//    @JsonIgnore
     @OneToMany(mappedBy = "news_age")
     private List<ageanalysis> ageanalyses = new ArrayList<>();
 
-    @JsonIgnore
+//    @JsonIgnore
     @OneToMany(mappedBy = "news_comments")
     private List<comments> commentses = new ArrayList<>();
 
-    @JsonIgnore
+//    @JsonIgnore
     @OneToMany(mappedBy = "news_gender")
     private List<genderanalysis> genderanalyses = new ArrayList<>();
 }
