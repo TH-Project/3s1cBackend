@@ -9,16 +9,16 @@ public class WholeDataDto {
 
     private Timestamp today;
 
-    private int today_comments;
-    private int today_news;
+    private Long today_comments;
+    private Long today_news;
 
-    private int week_comments;
-    private int week_news;
+    private Long week_comments;
+    private Long week_news;
 
-    private int hist_comments;
-    private int hist_news;
+    private Long hist_comments;
+    private Long hist_news;
 
-    public WholeDataDto(Timestamp today, int today_comments, int today_news, int week_comments, int week_news, int hist_comments, int hist_news){
+    public WholeDataDto(Timestamp today, Long today_comments, Long today_news, Long week_comments, Long week_news, Long hist_comments, Long hist_news){
         this.today = today;
         this.today_comments = today_comments;
         this.today_news = today_news;
