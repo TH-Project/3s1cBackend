@@ -13,7 +13,7 @@ import java.util.List;
 @Entity
 @Getter @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@ToString(of= {"newsId", "title", "url", "date"})
+@ToString(of= {"newsId", "title", "url", "date", "brief_article"})
 public class news {
 
     @Id
@@ -23,6 +23,7 @@ public class news {
     private String title;
     private String url;
     private Timestamp date;
+    private String brief_article;
 
 //    @JsonIgnore
     @OneToMany(mappedBy = "news_age")
@@ -36,11 +37,12 @@ public class news {
     @OneToMany(mappedBy = "news_gender")
     private List<genderanalysis> genderanalyses = new ArrayList<>();
 
-    public news(int newsId, String title, String url, Timestamp date){
+    public news(int newsId, String title, String url, Timestamp date, String brief_article){
         this.newsId = newsId;
         this.title = title;
         this.url = url;
         this.date = date;
+        this.brief_article = brief_article;
     }
 
 }
