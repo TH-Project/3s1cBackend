@@ -14,6 +14,7 @@ public class CommentsDto {
     private int recommended;
     private int unrecommended;
     private Timestamp date;
+    private String news_title;
 
     public CommentsDto(int commentsId, int News_Comments, String contents, String writer, int recommended, int unrecommended, Timestamp date){
         this.commentsId = commentsId;
@@ -23,5 +24,12 @@ public class CommentsDto {
         this.recommended = recommended;
         this.unrecommended = unrecommended;
         this.date = date;
+    }
+
+    public CommentsDto(int commentsId, String news_title, String contents, String writer){
+        this.commentsId = commentsId;
+        this.news_title = news_title;
+        this.contents = contents;
+        this.writer = writer;
     }
 }
