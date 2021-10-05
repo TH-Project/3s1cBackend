@@ -28,4 +28,14 @@ public class WholeDataService {
 
         wholeDataRepository.updateToday();
     }
+
+    @Transactional
+    public Long returnNumOfComments(){
+        return wholeDataRepository.numOfCommentsData();
+    }
+
+    @Transactional
+    public Long returnNumOfNews(){
+        return wholeDataRepository.numOfNewsData();
+    }
 }

@@ -3,11 +3,14 @@ package com.s1c.rtp.controller;
 import java.util.Arrays;
 import java.util.List;
 
+import com.s1c.rtp.dto.CommentsDto;
 import com.s1c.rtp.dto.GenderDto;
 import com.s1c.rtp.entity.genderanalysis;
 import com.s1c.rtp.entity.news;
+import com.s1c.rtp.repository.CommentsRepository;
 import com.s1c.rtp.repository.NewsRepository;
 import com.s1c.rtp.repository.GenderRepository;
+import com.s1c.rtp.service.WholeDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,22 +29,40 @@ public class AnalysisController {
     @Autowired
     GenderRepository genderRepository;
 
+    @Autowired
+    CommentsRepository commentsRepository;
+
+    @Autowired
+    WholeDataService wholeDataService;
+
     @GetMapping("/real-time-popularity/news/all")
     public List<news> retrieveAllNews(){
-        List<news> result = newsRepository.findAll();
-        return result;
+        return newsRepository.findAll();
     }
 
     @GetMapping("/real-time-popularity/gender/all")
     public List<genderanalysis> retrieveAllGender(){
-        List<genderanalysis> results = genderRepository.findAll();
-        return results;
+        return genderRepository.findAll();
     }
 
     @GetMapping("/real-time-popularity/genderDto/all")
     public List<GenderDto> retrieveAllGenderDto(){
-        List<GenderDto> genderDtoList = genderRepository.findGenderDto();
-        return genderDtoList;
+        return genderRepository.findGenderDto();
+    }
+
+    @GetMapping("/real-time-popularity/commentsDto/withNews")
+    public List<CommentsDto> returnCommentsWithNews(){
+        return commentsRepository.findCommentsWithNews();
+    }
+
+    @GetMapping("/analysis/total-number-comments")
+    public Long returnNumOfComments(){
+        return wholeDataService.returnNumOfComments();
+    }
+
+    @GetMapping("/analysis/total-number-news")
+    public Long returnNumOfNew(){
+        return wholeDataService.returnNumOfNews();
     }
 
 }
