@@ -21,15 +21,15 @@ public class KEYWORDS {
     private String keyword;
     private double positive;
     private double negative;
-    private int rank;
+    private int ranks;
     private int mentions;
 
-    public KEYWORDS(int keywordId, String keyword, double positive, double negative, int rank, int mentions){
+    public KEYWORDS(int keywordId, String keyword, double positive, double negative, int ranks, int mentions){
         this.keywordId = keywordId;
         this.keyword = keyword;
         this.positive = positive;
         this.negative = negative;
-        this.rank = rank;
+        this.ranks = ranks;
         this.mentions = mentions;
     }
 }
