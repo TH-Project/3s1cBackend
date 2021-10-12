@@ -12,7 +12,7 @@ public class GenderDto {
 
     public GenderDto(int genderId, int News_Gender, double male, double female){
         this.genderId = genderId;
-        newsId = News_Gender;
+        this.newsId = News_Gender;
         this.male = male;
         this.female = female;
     }

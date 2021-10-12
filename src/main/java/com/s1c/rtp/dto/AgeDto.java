@@ -16,7 +16,7 @@ public class AgeDto {
 
     public AgeDto(int ageId, int News_Id, double tens, double twenties, double thirties, double fourties, double fifties, double sixties){
         this.ageId = ageId;
-        newsId = News_Id;
+        this.newsId = News_Id;
         this.tens = tens;
         this.twenties = twenties;
         this.thirties = thirties;
