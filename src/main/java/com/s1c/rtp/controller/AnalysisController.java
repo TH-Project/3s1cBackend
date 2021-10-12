@@ -8,6 +8,7 @@ import com.s1c.rtp.dto.*;
 import com.s1c.rtp.entity.*;
 import com.s1c.rtp.repository.*;
 import com.s1c.rtp.service.*;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -78,6 +79,11 @@ public class AnalysisController {
     @GetMapping("/analysis/keyword/BiggerThanCount/{count}")
     public List<KeywordDto> returnBiggerThanCount(@PathVariable("count") int count){
         return keywordService.returnBiggerThanCount(count);
+    }
+
+    @GetMapping("/analysis/comments/timeGraph")
+    public JSONObject returnTimeGraph(){
+        return commentsService.returnCommentsNTime();
     }
 
 }
