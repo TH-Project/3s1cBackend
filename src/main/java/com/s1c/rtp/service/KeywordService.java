@@ -26,4 +26,17 @@ public class KeywordService {
         }
         return listBiggerThanRate;
     }
+
+    @Transactional
+    public List<KeywordDto> returnBiggerThanCount(int count){
+        List<KeywordDto> listKeyword = keywordRepository.findAllKeyword();
+        ArrayList<KeywordDto> listBiggerThanCount = new ArrayList<KeywordDto>();
+        for(KeywordDto obj : listKeyword){
+            if (obj.getMentions() > count) {
+                listBiggerThanCount.add(obj);
+            }
+        }
+        return listBiggerThanCount;
+    }
+
 }

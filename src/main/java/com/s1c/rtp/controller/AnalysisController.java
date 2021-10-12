@@ -75,4 +75,9 @@ public class AnalysisController {
         return keywordService.returnBiggerThanRate(rate);
     }
 
+    @GetMapping("/analysis/keyword/BiggerThanCount/{count}")
+    public List<KeywordDto> returnBiggerThanCount(@PathVariable("count") int count){
+        return keywordService.returnBiggerThanCount(count);
+    }
+
 }
