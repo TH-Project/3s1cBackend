@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -27,7 +28,9 @@ public class comments {
     private String writer;
     private int recommended;
     private int unrecommended;
-    private Timestamp date;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date date;
 
     public comments(int commentsId, String contents, String writer, int recommended, int unrecommended, Timestamp date, news news_comments){
         this.commentsId = commentsId;
