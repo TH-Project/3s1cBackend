@@ -9,10 +9,7 @@ import com.s1c.rtp.entity.*;
 import com.s1c.rtp.repository.*;
 import com.s1c.rtp.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 
 @CrossOrigin("*")
@@ -34,6 +31,9 @@ public class AnalysisController {
 
     @Autowired
     CommentsService commentsService;
+
+    @Autowired
+    KeywordService keywordService;
 
     @GetMapping("/real-time-popularity/news/all")
     public List<news> retrieveAllNews(){
@@ -68,6 +68,11 @@ public class AnalysisController {
     @GetMapping("/analysis/WritersNComments")
     public GroupByDto returnNumOfWritersNComments(){
         return commentsService.returnNumOfWritersNComments();
+    }
+
+    @GetMapping("/analysis/keyword/BiggerThanRate/{rate}")
+    public List<KeywordDto> returnBiggerThanRate(@PathVariable("rate") double rate){
+        return keywordService.returnBiggerThanRate(rate);
     }
 
 }
