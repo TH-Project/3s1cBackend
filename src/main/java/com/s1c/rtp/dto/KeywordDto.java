@@ -21,6 +21,7 @@ public class KeywordDto {
         this.negative = negative;
         this.ranks = ranks;
         this.mentions = mentions;
+        this.rate = negative/positive;
     }
 
     public KeywordDto(String keyword, double positive, double negative){

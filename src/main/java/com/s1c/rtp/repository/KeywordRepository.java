@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface KeywordRepository extends JpaRepository<KEYWORDS, Integer>{
 
-    @Query("select new com.s1c.rtp.dto.KeywordDto(k.keyword, k.positive, k.negative) from KEYWORDS k")
+    @Query("select new com.s1c.rtp.dto.KeywordDto(k.keywordId, k.keyword, k.positive, k.negative, k.ranks, k.mentions) from KEYWORDS k")
     List<KeywordDto> findAllKeyword();
 
 }
