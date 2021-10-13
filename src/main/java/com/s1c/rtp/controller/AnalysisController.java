@@ -71,17 +71,17 @@ public class AnalysisController {
         return commentsService.returnNumOfWritersNComments();
     }
 
-    @GetMapping("/analysis/keyword/BiggerThanRate/{rate}")
+    @GetMapping("/analysis/keywords/bigger-than-rate/{rate}")
     public List<KeywordDto> returnBiggerThanRate(@PathVariable("rate") double rate){
         return keywordService.returnBiggerThanRate(rate);
     }
 
-    @GetMapping("/analysis/keyword/BiggerThanCount/{count}")
+    @GetMapping("/analysis/keywords/bigger-than-count/{count}")
     public List<KeywordDto> returnBiggerThanCount(@PathVariable("count") int count){
         return keywordService.returnBiggerThanCount(count);
     }
 
-    @GetMapping("/analysis/comments/timeGraph")
+    @GetMapping("/analysis/comments/time--graph")
     public JSONObject returnTimeGraph(){
         return commentsService.returnCommentsNTime();
     }
