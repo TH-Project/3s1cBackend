@@ -87,7 +87,7 @@ public class CommentsService {
             } else if (obj.getTime() == 21) {
                 twentyOne++;
             } else if (obj.getTime() == 22) {
-                twentyThree++;
+                twentyTwo++;
             } else if (obj.getTime() == 23) {
                 twentyThree++;
             }
