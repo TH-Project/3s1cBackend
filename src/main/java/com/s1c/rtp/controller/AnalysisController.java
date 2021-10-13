@@ -81,7 +81,7 @@ public class AnalysisController {
         return keywordService.returnBiggerThanCount(count);
     }
 
-    @GetMapping("/analysis/comments/time--graph")
+    @GetMapping("/analysis/comments/time-graph")
     public JSONObject returnTimeGraph(){
         return commentsService.returnCommentsNTime();
     }
