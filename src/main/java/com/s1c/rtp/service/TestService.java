@@ -1,6 +1,7 @@
 package com.s1c.rtp.service;
 
 import com.s1c.rtp.dto.Test2dto;
+import com.s1c.rtp.dto.Test3dto;
 import com.s1c.rtp.entity.TestEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -175,4 +176,47 @@ public class TestService {
 
         return test2dtoList;
     }
+
+    @Transactional
+    public Test3dto getAllTest3dtoList() {
+
+        int comment1 = 275631;
+        int article1 = 1121;
+        HashMap<String, Double> day0 = new HashMap<>();
+        HashMap<String, Double> day1 = new HashMap<>();
+        HashMap<String, Double> day2 = new HashMap<>();
+
+        HashMap<String, HashMap<String, Double>> sentiment = new HashMap<>();
+        day0.put("positive", 0.13);
+        day0.put("negative", 0.87);
+        day1.put("positive", 0.20);
+        day1.put("negative", 0.80);
+        day2.put("positive", 0.15);
+        day2.put("negative", 0.85);
+
+        sentiment.put("day0", day0);
+        sentiment.put("day1", day1);
+        sentiment.put("day2", day2);
+
+        HashMap<String, HashMap<String, Integer>> ranking = new HashMap<>();
+
+        HashMap<String, Integer> rank1 = new HashMap<>();
+        HashMap<String, Integer> rank2 = new HashMap<>();
+        HashMap<String, Integer> rank3 = new HashMap<>();
+
+        rank1.put("코로나", 33286);
+        rank2.put("북한", 12562);
+        rank3.put("대통령", 6189);
+
+        ranking.put("1", rank1);
+        ranking.put("2", rank2);
+        ranking.put("3", rank3);
+
+
+        Test3dto test3dto = new Test3dto(comment1, article1, sentiment, ranking);
+
+        return test3dto;
+    }
+
+
 }
