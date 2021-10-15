@@ -3,14 +3,14 @@ package com.s1c.rtp.controller;
 
 import java.util.List;
 
+import com.s1c.rtp.dto.NewsDto;
 import com.s1c.rtp.dto.Test2dto;
 import com.s1c.rtp.dto.Test3dto;
 import com.s1c.rtp.entity.TestEntity;
+import com.s1c.rtp.service.NewsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.domain.Page;
+import org.springframework.web.bind.annotation.*;
 import com.s1c.rtp.service.TestService;
 
 @CrossOrigin(origins = "http://localhost:3000")
@@ -20,6 +20,8 @@ public class TestController {
 
     @Autowired
     TestService testService;
+
+
 
     @GetMapping("/test")
     public List<TestEntity> retriveTestPopularity() {

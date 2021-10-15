@@ -10,6 +10,7 @@ import com.s1c.rtp.repository.*;
 import com.s1c.rtp.service.*;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -35,6 +36,9 @@ public class AnalysisController {
 
     @Autowired
     KeywordService keywordService;
+
+    @Autowired
+    NewsService newsService;
 
     @GetMapping("/real-time-popularity/news/all")
     public List<news> retrieveAllNews(){
@@ -84,6 +88,11 @@ public class AnalysisController {
     @GetMapping("/analysis/comments/time-graph")
     public JSONObject returnTimeGraph(){
         return commentsService.returnCommentsNTime();
+    }
+
+    @GetMapping("/keywords/{keyword}/news-summary")
+    public Page<String> retrieveBreifNews(@PathVariable("keyword") String keyword) {
+        return newsService.retrieveBriefNews(keyword);
     }
 
 
