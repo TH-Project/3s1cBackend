@@ -64,11 +64,11 @@ public class NewsService {
             femaleSum += genderDto.getFemale();
         }
 
-        double avgMale = maleSum / searchedNewsId.size();
-        double avgFemale = femaleSum / searchedNewsId.size();
+        double avgMale =  (maleSum / searchedNewsId.size())/100;
+        double avgFemale = (femaleSum / searchedNewsId.size())/100;
 
-        hashMap.put("male", avgMale);
-        hashMap.put("female", avgFemale);
+        hashMap.put("male", Math.round(avgMale*100)/100.0);
+        hashMap.put("female", Math.round(avgFemale*100)/100.0);
 
         return hashMap;
     }
@@ -107,19 +107,19 @@ public class NewsService {
             sixtiesSum += ageDto.getSixties();
         }
 
-        double avgTens = tensSum / searchedNewsId.size();
-        double avgTwenties = twentiesSum / searchedNewsId.size();
-        double avgFhirties = thirtiesSum / searchedNewsId.size();
-        double avgFourties = fourtiesSum / searchedNewsId.size();
-        double avgFifties = fiftiesSum / searchedNewsId.size();
-        double avgSixteis = sixtiesSum / searchedNewsId.size();
+        double avgTens = (tensSum / searchedNewsId.size())/100;
+        double avgTwenties = (twentiesSum / searchedNewsId.size())/100;
+        double avgFhirties = (thirtiesSum / searchedNewsId.size())/100;
+        double avgFourties = (fourtiesSum / searchedNewsId.size())/100;
+        double avgFifties = (fiftiesSum / searchedNewsId.size())/100;
+        double avgSixteis = (sixtiesSum / searchedNewsId.size())/100;
 
-        hashMap.put("10", avgTens);
-        hashMap.put("20", avgTwenties);
-        hashMap.put("30", avgFhirties);
-        hashMap.put("40", avgFourties);
-        hashMap.put("50", avgFifties);
-        hashMap.put("60", avgSixteis);
+        hashMap.put("10", Math.round(avgTens*100)/100.0);
+        hashMap.put("20", Math.round(avgTwenties*100)/100.0);
+        hashMap.put("30", Math.round(avgFhirties*100)/100.0);
+        hashMap.put("40", Math.round(avgFourties*100)/100.0);
+        hashMap.put("50", Math.round(avgFifties*100)/100.0);
+        hashMap.put("60", Math.round(avgSixteis*100)/100.0);
 
         return hashMap;
     }
