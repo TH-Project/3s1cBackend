@@ -101,4 +101,10 @@ public class AnalysisController {
         return newsService.retrieveGenderRatioByKeyword(keyword);
     }
 
+    @GetMapping("/keywords/{keyword}/age-ratio")
+    public HashMap<String, Double> retrieveAgeRatio(@PathVariable("keyword") String keyword) {
+        return newsService.retrieveAgeRatioByKeyword(keyword);
+    }
+
+
 }
