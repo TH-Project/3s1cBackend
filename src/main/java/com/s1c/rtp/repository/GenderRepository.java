@@ -12,4 +12,8 @@ public interface GenderRepository extends JpaRepository<genderanalysis, Integer>
 
     @Query("select new com.s1c.rtp.dto.GenderDto(g.genderId, n.newsId, g.male, g.female) from genderanalysis g join g.news_gender n")
     List<GenderDto> findGenderDto();
+
+    @Query("select new com.s1c.rtp.dto.GenderDto(g.genderId, n.newsId, g.male, g.female) from genderanalysis g join g.news_gender n where n.newsId = :newsId")
+    GenderDto findGenderDtoByNewsId(@Param("newsId") int newsId);
+
 }

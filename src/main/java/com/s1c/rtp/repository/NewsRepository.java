@@ -14,8 +14,10 @@ import java.util.List;
 public interface NewsRepository extends JpaRepository<news, Integer>{
 
     @Query("Select n.brief_article from news n where n.brief_article Like concat('%', :keyword, '%') order by n.date desc")
-    public Page<String> findBriefArticleByKeyword(@Param("keyword") String keyword, Pageable pageable);
+    Page<String> findBriefArticleByKeyword(@Param("keyword") String keyword, Pageable pageable);
 
+    @Query("Select n.newsId from news n where n.brief_article Like concat('%', :keyword, '%') order by n.date desc")
+    List<Integer> findNewsIdByKeyword(@Param("keyword") String keyword);
 
 }
 

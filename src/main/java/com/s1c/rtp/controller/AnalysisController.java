@@ -1,6 +1,7 @@
 package com.s1c.rtp.controller;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 
@@ -92,8 +93,12 @@ public class AnalysisController {
 
     @GetMapping("/keywords/{keyword}/news-summary")
     public Page<String> retrieveBreifNews(@PathVariable("keyword") String keyword) {
-        return newsService.retrieveBriefNews(keyword);
+        return newsService.retrieveBriefNewsByKeyword(keyword);
     }
 
+    @GetMapping("/keywords/{keyword}/gender-ratio")
+    public HashMap<String, Double> retrieveGenderRatio(@PathVariable("keyword") String keyword) {
+        return newsService.retrieveGenderRatioByKeyword(keyword);
+    }
 
 }
