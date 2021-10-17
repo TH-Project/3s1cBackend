@@ -28,10 +28,12 @@ public class TestController {
         return  testService.getAllTestList();
     }
 
-    @GetMapping("/real-time-popularity")
-    public List<Test2dto> retriveAllPopularity() {
-        return  testService.getAllTest2dtoList();
-    }
+
+    // 실제 데이터로 대체
+    //   @GetMapping("/real-time-popularity")
+    //   public List<Test2dto> retriveAllPopularity() {
+    //       return  testService.getAllTest2dtoList();
+    //   }
 
     @GetMapping("/real-time-popularity/test")
     public String returnTestString() {

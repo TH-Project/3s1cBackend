@@ -106,5 +106,11 @@ public class AnalysisController {
         return newsService.retrieveAgeRatioByKeyword(keyword);
     }
 
+    @GetMapping("/real-time-popularity")
+    public List<RtpDto> retriveAllPopularity() {
+        return  keywordService.returnRealTimePopularity();
+
+    }
+
 
 }

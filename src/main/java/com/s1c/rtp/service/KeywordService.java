@@ -1,12 +1,16 @@
 package com.s1c.rtp.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.s1c.rtp.repository.*;
 import com.s1c.rtp.dto.*;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -14,6 +18,18 @@ public class KeywordService {
 
     @Autowired
     KeywordRepository keywordRepository;
+
+    @Autowired
+    NewsRepository newsRepository;
+
+    @Autowired
+    GenderRepository genderRepository;
+
+    @Autowired
+    AgeRepository ageRepository;
+
+    @Autowired
+    NewsService newsService;
 
     @Transactional
     public List<KeywordDto> returnBiggerThanRate(double rate){
@@ -39,6 +55,48 @@ public class KeywordService {
         return listBiggerThanCount;
     }
 
+    @Transactional
+    public List<RtpDto> returnRealTimePopularity() {
+        Pageable pageableSize20 = PageRequest.of(0, 20);
+        Page<KeywordDto> keywordDtos = keywordRepository.findTopKeyword(pageableSize20);
+        List<RtpDto> rtpDtoList = new ArrayList<>();
+
+        for(KeywordDto keywordDto : keywordDtos) {
+
+            Page<String> pageBrefNews = newsService.retrieveBriefNewsByKeyword(keywordDto.getKeyword());
+            HashMap<String, Double> genderRatio = newsService.retrieveGenderRatioByKeyword(keywordDto.getKeyword());
+            HashMap<String, Double> ageRatio = newsService.retrieveAgeRatioByKeyword(keywordDto.getKeyword());
+
+            List<String> brefList = pageBrefNews.getContent();
+            String brefNews;
+            if (brefList.size() == 0) {
+                brefNews = "해당 키워드를 보여주기에 충분한 데이터가 모이지 않았습니다.";
+            }
+            else {
+                brefNews =  brefList.get(0);
+            }
+
+            int keywordId = keywordDto.getKeywordId();
+            String keyword = keywordDto.getKeyword();
+            int rank = keywordDto.getRanks();
+            double positive = keywordDto.getPositive();
+            double negative = keywordDto.getNegative();
+
+            HashMap<String, Double> sentiment = new HashMap<>();
+            sentiment.put("positive", Math.round(positive*100)/100.0);
+            sentiment.put("negative", Math.round(negative*100)/100.0);
+
+            // 태그기능 준비안됨. 임의로 넣기 [관련키워드 기능이 완성되어야함]
+            List<String> tags = new ArrayList<>();
+            tags.add("태그기능");
+            tags.add("할려면");
+            tags.add("관련키워드 기능이");
+            tags.add("만들어져야함.");
+            RtpDto rtpDto = new RtpDto(keywordId, rank, keyword, brefNews,genderRatio, ageRatio, sentiment, tags);
+            rtpDtoList.add(rtpDto);
+        }
+        return rtpDtoList;
+    }
 
 
 }
