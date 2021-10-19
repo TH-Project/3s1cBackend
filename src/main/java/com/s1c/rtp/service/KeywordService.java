@@ -125,14 +125,15 @@ public class KeywordService {
         Page<Integer> newsIdDtos =newsRepository.findNewsIdByKeyword2(keyword, pageableSize3);
 
         List<RelatedNewsDto> relatedNewsDtoList = new ArrayList<>();
-
+        int id =0; // newsId가 아닌, 프론트엔드에서 구분을 위한 임시적 id
         for(int newsId : newsIdDtos){
             news news = newsRepository.findnewsByNewsId(newsId);
             String title = news.getTitle();
             String url = news.getUrl();
             int commentsNumber = commentsRepository.findCommentsNumberByNewsId(news.getNewsId());
 
-            RelatedNewsDto relatedNewsDto = new RelatedNewsDto(title, url, commentsNumber);
+            id++;
+            RelatedNewsDto relatedNewsDto = new RelatedNewsDto(id, title, url, commentsNumber);
             relatedNewsDtoList.add(relatedNewsDto);
         }
 
