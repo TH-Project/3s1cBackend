@@ -1,5 +1,6 @@
 package com.s1c.rtp.service;
 
+import com.s1c.rtp.entity.news;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -30,6 +31,9 @@ public class KeywordService {
 
     @Autowired
     NewsService newsService;
+
+    @Autowired
+    CommentsRepository commentsRepository;
 
     @Transactional
     public List<KeywordDto> returnBiggerThanRate(double rate){
@@ -97,6 +101,44 @@ public class KeywordService {
         }
         return rtpDtoList;
     }
+
+    @Transactional
+    public HashMap<String, Integer> retrieveRanksAndMentions(String keyword) {
+
+        HashMap<String, Integer> hashMap = new HashMap<>();
+        String key = keywordRepository.findKeywordByKeyword(keyword);
+        KeywordDto searchedKeywordDTO = keywordRepository.findKeywordDTOByKeyword(key);
+
+        int rank = searchedKeywordDTO.getRanks();
+        int metions = searchedKeywordDTO.getMentions();
+
+        hashMap.put("Rank", rank);
+        hashMap.put("Mentions", metions);
+
+        return hashMap;
+    }
+
+    @Transactional
+    public List<RelatedNewsDto> retrieveRelatedArticles(String keyword) {
+
+        Pageable pageableSize3 = PageRequest.of(0, 3);
+        Page<Integer> newsIdDtos =newsRepository.findNewsIdByKeyword2(keyword, pageableSize3);
+
+        List<RelatedNewsDto> relatedNewsDtoList = new ArrayList<>();
+
+        for(int newsId : newsIdDtos){
+            news news = newsRepository.findnewsByNewsId(newsId);
+            String title = news.getTitle();
+            String url = news.getUrl();
+            int commentsNumber = commentsRepository.findCommentsNumberByNewsId(news.getNewsId());
+
+            RelatedNewsDto relatedNewsDto = new RelatedNewsDto(title, url, commentsNumber);
+            relatedNewsDtoList.add(relatedNewsDto);
+        }
+
+        return relatedNewsDtoList;
+    }
+
 
 
 }

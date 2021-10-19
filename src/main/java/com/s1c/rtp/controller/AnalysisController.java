@@ -109,7 +109,16 @@ public class AnalysisController {
     @GetMapping("/real-time-popularity")
     public List<RtpDto> retriveAllPopularity() {
         return  keywordService.returnRealTimePopularity();
+    }
 
+    @GetMapping("/keywords/{keyword}/ranks-mentions")
+    public HashMap<String, Integer> retrieveRanksAndMetions(@PathVariable("keyword") String keyword) {
+        return keywordService.retrieveRanksAndMentions(keyword);
+    }
+
+    @GetMapping("/keywords/{keyword}/related-articles")
+    public List<RelatedNewsDto> retrieveRelatedArticles(@PathVariable("keyword") String keyword) {
+        return keywordService.retrieveRelatedArticles(keyword);
     }
 
 

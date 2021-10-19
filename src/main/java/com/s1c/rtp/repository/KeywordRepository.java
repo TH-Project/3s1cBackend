@@ -16,10 +16,14 @@ public interface KeywordRepository extends JpaRepository<KEYWORDS, Integer>{
     List<KeywordDto> findAllKeyword();
 
     @Query("Select distinct k.keyword from KEYWORDS k where k.keyword = :keyword")
-    public String findKeywordByKeyword(@Param("keyword") String keyword);
+    String findKeywordByKeyword(@Param("keyword") String keyword);
 
     @Query("select new com.s1c.rtp.dto.KeywordDto(k.keywordId, k.keyword, k.positive, k.negative, k.ranks, k.mentions) from KEYWORDS k order by k.ranks")
     Page<KeywordDto> findTopKeyword(Pageable pageable);
+
+    @Query("Select new com.s1c.rtp.dto.KeywordDto (k.keywordId, k.keyword, k.positive, k.negative, k.ranks, k.mentions) from KEYWORDS k where k.keyword = :keyword")
+    KeywordDto findKeywordDTOByKeyword(@Param("keyword") String keyword);
+
 
 
 }

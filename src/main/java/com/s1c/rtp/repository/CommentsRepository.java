@@ -23,6 +23,9 @@ public interface CommentsRepository extends JpaRepository<comments, Integer>{
     @Query("select new com.s1c.rtp.dto.TimeCommentsDto(c.commentsId, c.date) from comments c")
     List<TimeCommentsDto> findAllCommentsNTime();
 
+    @Query("select count(c.commentsId) from comments c join c.news_comments n where n.newsId = :newsId")
+    int findCommentsNumberByNewsId(@Param("newsId") int newsId);
+
 //    @Query("select new com.s1c.rtp.dto.GroupByDto(:numOfComments, :numOfWriters) from comments c")
 //    List<GroupByDto> returnWritersNComments(@Param("numOfComments") Long numOfComments, @Param("numOfWriters") Long numOfWriters);
 }
