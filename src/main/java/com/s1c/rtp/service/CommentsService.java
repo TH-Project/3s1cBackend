@@ -31,6 +31,13 @@ public class CommentsService {
     }
 
     @Transactional
+    public Long returnNumOfWriters() {        
+        Long numWriters = commentsRepository.returnNumOfWriters();
+
+        return numWriters;
+    }
+
+    @Transactional
     public JSONObject returnCommentsNTime() {
         int zero, one, two, three, four, five, six, seven, eight, nine, ten;
         int eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty;

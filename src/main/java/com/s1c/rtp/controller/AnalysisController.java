@@ -71,6 +71,9 @@ public class AnalysisController {
         return wholeDataService.returnNumOfNews();
     }
 
+    @GetMapping("/analysis/total-number-writers")
+    public Long returnNumOfWriters(){ return commentsService.returnNumOfWriters(); }
+
     @GetMapping("/analysis/WritersNComments")
     public GroupByDto returnNumOfWritersNComments(){
         return commentsService.returnNumOfWritersNComments();
