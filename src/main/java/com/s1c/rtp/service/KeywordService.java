@@ -133,7 +133,7 @@ public class KeywordService {
             int commentsNumber = commentsRepository.findCommentsNumberByNewsId(news.getNewsId());
 
             id++;
-            RelatedNewsDto relatedNewsDto = new RelatedNewsDto(id, title, url, commentsNumber);
+            RelatedNewsDto relatedNewsDto = new RelatedNewsDto(id, newsId, title, url, commentsNumber);
             relatedNewsDtoList.add(relatedNewsDto);
         }
 
