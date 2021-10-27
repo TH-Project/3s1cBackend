@@ -121,6 +121,10 @@ public class AnalysisController {
     public List<RelatedNewsDto> retrieveRelatedArticles(@PathVariable("keyword") String keyword) {
         return keywordService.retrieveRelatedArticles(keyword);
     }
+    @GetMapping("/analysis/users/heavy-user")
+    public Page<CommentsUserDto> retrieveHeavyUser() {
+        return commentsService.retrieveHeavyUser();
+    }
 
     @GetMapping("/analysis/having-many-comments")
     public List<CommentsDto2> retrieveNewsManyComments() {

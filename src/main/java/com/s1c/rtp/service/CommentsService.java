@@ -3,6 +3,10 @@ package com.s1c.rtp.service;
 import com.mysql.cj.xdevapi.JsonArray;
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.s1c.rtp.repository.*;
@@ -143,5 +147,19 @@ public class CommentsService {
         }
 
         return topThree;
+    }
+
+    @Transactional
+    public Page<CommentsUserDto> retrieveHeavyUser() {
+        Pageable pageable = PageRequest.of(0, 20);
+        Page<CommentsUserDto> commentsUserList = commentsRepository.retrieveHeavyUser(pageable);
+
+        // 프론트엔드단 id인덱싱을 위해 1씩 증가하는 임의id 부여
+        int cnt =1;
+        for(CommentsUserDto dto : commentsUserList) {
+            dto.setId(cnt);
+            cnt++;
+        }
+        return commentsUserList;
     }
 }
