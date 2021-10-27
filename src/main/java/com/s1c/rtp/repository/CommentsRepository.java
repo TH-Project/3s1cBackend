@@ -5,6 +5,7 @@ import com.s1c.rtp.dto.CommentsDto;
 import com.s1c.rtp.dto.CommentsUserDto;
 import com.s1c.rtp.dto.GroupByDto;
 import com.s1c.rtp.dto.TimeCommentsDto;
+import com.s1c.rtp.dto.*;
 import com.s1c.rtp.entity.comments;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,6 +32,9 @@ public interface CommentsRepository extends JpaRepository<comments, Integer>{
 
     @Query("select new com.s1c.rtp.dto.CommentsUserDto(count(c), c.writer) from comments c group by c.writer having count(c) > 10 order by count(c) desc ")
     Page<CommentsUserDto> retrieveHeavyUser(Pageable pageable);
+
+    @Query("select new com.s1c.rtp.dto.CommentsDto2(c.news_comments.newsId, count(c.news_comments.newsId), c.news_comments.title) from comments c group by c.news_comments.newsId order by count(c.news_comments.newsId) desc")
+    List<CommentsDto2> returnNewsIdNNumofComments();
 
 
 //    @Query("select new com.s1c.rtp.dto.GroupByDto(:numOfComments, :numOfWriters) from comments c")
