@@ -24,6 +24,11 @@ public class news {
     private String url;
     private Timestamp date;
     private String brief_article;
+    private int likes;
+    private int sads;
+    private int angries;
+    private int warms;
+
 
 //    @JsonIgnore
     @OneToMany(mappedBy = "news_age")
@@ -37,12 +42,16 @@ public class news {
     @OneToMany(mappedBy = "news_gender")
     private List<genderanalysis> genderanalyses = new ArrayList<>();
 
-    public news(int newsId, String title, String url, Timestamp date, String brief_article){
+    public news(int newsId, String title, String url, Timestamp date, String brief_article, int likes, int sads, int angries, int warms){
         this.newsId = newsId;
         this.title = title;
         this.url = url;
         this.date = date;
         this.brief_article = brief_article;
+        this.likes = likes;
+        this.sads = sads;
+        this.angries = angries;
+        this.warms = warms;
     }
 
 }
