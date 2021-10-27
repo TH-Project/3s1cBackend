@@ -131,6 +131,11 @@ public class AnalysisController {
         return commentsService.returnNewsHasManyCommentsTopThree();
     }
 
+    @GetMapping("/keywords/{keyword}/emoticons")
+    public KeywordDto2 returnKeywordEmoticon(@PathVariable("keyword") String keyword) {
+        return keywordService.returnKeywordEmoticon(keyword);
+    }
+
 
 
 
