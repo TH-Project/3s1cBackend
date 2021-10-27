@@ -140,6 +140,26 @@ public class KeywordService {
         return relatedNewsDtoList;
     }
 
+    @Transactional
+    public KeywordDto2 returnKeywordEmoticon(String keyword) {
+        int like = 0;
+        int sad = 0;
+        int angry = 0;
+        int warm = 0;
+
+        List<Integer> newsIds = newsRepository.findNewsIdByKeyword3(keyword);
+
+        for (Integer newsId : newsIds) {
+            NewsDto3 temp = keywordRepository.findKeywordNews(newsId);
+            like += temp.getLike();
+            sad += temp.getSad();
+            angry += temp.getAngry();
+            warm += temp.getWarm();
+        }
+
+        return new KeywordDto2(keyword, like, sad, angry, warm);
+    }
+
 
 
 }
