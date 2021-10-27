@@ -141,11 +141,8 @@ public class CommentsService {
         List<CommentsDto2> topThree = new ArrayList<CommentsDto2>();
 
         for(int i=0;i<3;i++){
-            CommentsDto2 temp;
-            temp = commentsDto2s.get(i);
-            topThree.add(temp);
+            topThree.add(commentsDto2s.get(i));
         }
-
         return topThree;
     }
 
