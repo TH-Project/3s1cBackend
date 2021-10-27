@@ -130,4 +130,18 @@ public class CommentsService {
 
         return times;
     }
+
+    @Transactional
+    public List<CommentsDto2> returnNewsHasManyCommentsTopThree() {
+        List<CommentsDto2> commentsDto2s = commentsRepository.returnNewsIdNNumofComments();
+        List<CommentsDto2> topThree = new ArrayList<CommentsDto2>();
+
+        for(int i=0;i<3;i++){
+            CommentsDto2 temp;
+            temp = commentsDto2s.get(i);
+            topThree.add(temp);
+        }
+
+        return topThree;
+    }
 }

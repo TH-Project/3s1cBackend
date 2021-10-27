@@ -4,7 +4,7 @@ import com.s1c.rtp.dto.KeywordDto;
 import com.s1c.rtp.dto.NewsDto;
 import com.s1c.rtp.dto.NewsDto2;
 import com.s1c.rtp.entity.KEYWORDS;
-import com.s1c.rtp.entity.news;
+import com.s1c.rtp.entity.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

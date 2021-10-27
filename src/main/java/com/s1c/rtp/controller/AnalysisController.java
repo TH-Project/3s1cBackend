@@ -75,9 +75,7 @@ public class AnalysisController {
     public Long returnNumOfWriters(){ return commentsService.returnNumOfWriters(); }
 
     @GetMapping("/analysis/WritersNComments")
-    public GroupByDto returnNumOfWritersNComments(){
-        return commentsService.returnNumOfWritersNComments();
-    }
+    public GroupByDto returnNumOfWritersNComments(){ return commentsService.returnNumOfWritersNComments(); }
 
     @GetMapping("/analysis/keywords/bigger-than-rate/{rate}")
     public List<KeywordDto> returnBiggerThanRate(@PathVariable("rate") double rate){
@@ -123,6 +121,14 @@ public class AnalysisController {
     public List<RelatedNewsDto> retrieveRelatedArticles(@PathVariable("keyword") String keyword) {
         return keywordService.retrieveRelatedArticles(keyword);
     }
+
+    @GetMapping("/analysis/having-many-comments")
+    public List<CommentsDto2> retrieveNewsManyComments() {
+        return commentsService.returnNewsHasManyCommentsTopThree();
+    }
+
+
+
 
 
 }
