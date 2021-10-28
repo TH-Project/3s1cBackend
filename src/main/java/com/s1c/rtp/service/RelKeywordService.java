@@ -38,11 +38,12 @@ public class RelKeywordService {
                 it.remove();;
             }
         }
-
+/*
         for(RelKeywordDto dto : list){
             int mentions = dto.getMentions() / 10;
             dto.setMentions(mentions);
         }
+ */
         return list;
     }
 
