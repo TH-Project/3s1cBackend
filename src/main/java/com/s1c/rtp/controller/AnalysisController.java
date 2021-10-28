@@ -149,6 +149,11 @@ public class AnalysisController {
         return relKeywordService.retrieveRelatedKeyword(keyword);
     }
 
+    @GetMapping("/analysis/cumulative-statistics")
+    public WholeDataDto2 returnCumulativeStatistic() {
+        return wholeDataService.returnNumOfWholeData();
+    }
+
 
 
 
