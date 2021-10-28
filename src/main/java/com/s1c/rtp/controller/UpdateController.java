@@ -19,8 +19,8 @@ public class UpdateController {
     @Autowired
     WholeDataService wholeDataService;
 
-    @GetMapping("/updateTest")
-    public void updateTest() {
-        wholeDataService.updateWholeDataTable();
-    }
+//    @GetMapping("/updateTest")
+//    public void updateTest() {
+//        wholeDataService.updateWholeDataTable();
+//    }
 }
