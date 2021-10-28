@@ -1,13 +1,17 @@
 package com.s1c.rtp.controller;
 
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.s1c.rtp.dto.NewsDto;
+import com.s1c.rtp.dto.RelKeywordDto;
 import com.s1c.rtp.dto.Test2dto;
 import com.s1c.rtp.dto.Test3dto;
 import com.s1c.rtp.entity.TestEntity;
+import com.s1c.rtp.entity.relkeywords;
 import com.s1c.rtp.service.NewsService;
+import com.s1c.rtp.service.RelKeywordService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
@@ -20,6 +24,9 @@ public class TestController {
 
     @Autowired
     TestService testService;
+
+    @Autowired
+    RelKeywordService relKeywordService;
 
 
 
@@ -44,5 +51,13 @@ public class TestController {
     public Test3dto retriveAllCumulativeStatics() {
         return testService.getAllTest3dtoList();
     }
+
+
+    @GetMapping("/relkeywords")
+    public List<relkeywords> retriveAllRelkeywords() {
+        return relKeywordService.retrieveAllRelKeyword();
+    }
+
+
 
 }

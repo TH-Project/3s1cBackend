@@ -33,6 +33,9 @@ public class NewsService {
     @Autowired
     AgeRepository ageRepository;
 
+    @Autowired
+    RelKeywordService relKeywordService;
+
     @Transactional
     public Page<String> retrieveBriefNewsByKeyword(String keyword) {
 

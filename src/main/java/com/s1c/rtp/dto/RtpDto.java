@@ -14,7 +14,7 @@ public class RtpDto {
     private HashMap<String , Double> genderRatio;
     private HashMap<String , Double> ageRatio;
     private HashMap<String , Double> sentiment;
-    private List<String> tag; // 태그기능 준비안됨. 임의로 넣기 [관련키워드 기능이 완성되어야함]
+    private List<String> tag;
 
     // private int mentions;
 

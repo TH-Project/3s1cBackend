@@ -41,6 +41,9 @@ public class AnalysisController {
     @Autowired
     NewsService newsService;
 
+    @Autowired
+    RelKeywordService relKeywordService;
+
     @GetMapping("/real-time-popularity/news/all")
     public List<news> retrieveAllNews(){
         return newsRepository.findAll();
@@ -134,6 +137,16 @@ public class AnalysisController {
     @GetMapping("/keywords/{keyword}/emoticon-analysis")
     public KeywordDto2 returnKeywordEmoticon(@PathVariable("keyword") String keyword) {
         return keywordService.returnKeywordEmoticon(keyword);
+    }
+
+    @GetMapping("/keywords/{keyword}/wordcloud")
+    public List<RelKeywordDto> retriveRelkeywordByKeyword(@PathVariable("keyword") String keyword) {
+        return relKeywordService.retrieveRelkeywordByKeyword(keyword);
+    }
+
+    @GetMapping("/keywords/{keyword}/tags")
+    public List<String> retrieveRelatedKeyword(@PathVariable("keyword") String keyword) {
+        return relKeywordService.retrieveRelatedKeyword(keyword);
     }
 
 

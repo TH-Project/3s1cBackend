@@ -35,6 +35,9 @@ public class KeywordService {
     @Autowired
     CommentsRepository commentsRepository;
 
+    @Autowired
+    RelKeywordService relKeywordService;
+
     @Transactional
     public List<KeywordDto> returnBiggerThanRate(double rate){
         List<KeywordDto> listKeyword = keywordRepository.findAllKeyword();
@@ -61,15 +64,17 @@ public class KeywordService {
 
     @Transactional
     public List<RtpDto> returnRealTimePopularity() {
-        Pageable pageableSize20 = PageRequest.of(0, 20);
+        Pageable pageableSize20 = PageRequest.of(0, 15);
         Page<KeywordDto> keywordDtos = keywordRepository.findTopKeyword(pageableSize20);
         List<RtpDto> rtpDtoList = new ArrayList<>();
+        int keywordId = 1; // 진짜 keywordId가 아니라, 프론트단에서 인덱싱을 위한 임의 id
 
         for(KeywordDto keywordDto : keywordDtos) {
 
             Page<String> pageBrefNews = newsService.retrieveBriefNewsByKeyword(keywordDto.getKeyword());
             HashMap<String, Double> genderRatio = newsService.retrieveGenderRatioByKeyword(keywordDto.getKeyword());
             HashMap<String, Double> ageRatio = newsService.retrieveAgeRatioByKeyword(keywordDto.getKeyword());
+            List<String> tags = relKeywordService.retrieveRelatedKeyword(keywordDto.getKeyword());
 
             List<String> brefList = pageBrefNews.getContent();
             String brefNews;
@@ -80,7 +85,7 @@ public class KeywordService {
                 brefNews =  brefList.get(0);
             }
 
-            int keywordId = keywordDto.getKeywordId();
+//            int keywordId = keywordDto.getKeywordId(); 적절한 동작안함. 임의 id로 대체
             String keyword = keywordDto.getKeyword();
             int rank = keywordDto.getRanks();
             double positive = keywordDto.getPositive();
@@ -90,14 +95,9 @@ public class KeywordService {
             sentiment.put("positive", Math.round(positive*100)/100.0);
             sentiment.put("negative", Math.round(negative*100)/100.0);
 
-            // 태그기능 준비안됨. 임의로 넣기 [관련키워드 기능이 완성되어야함]
-            List<String> tags = new ArrayList<>();
-            tags.add("태그기능");
-            tags.add("할려면");
-            tags.add("관련키워드 기능이");
-            tags.add("만들어져야함.");
             RtpDto rtpDto = new RtpDto(keywordId, rank, keyword, brefNews,genderRatio, ageRatio, sentiment, tags);
             rtpDtoList.add(rtpDto);
+            keywordId++;
         }
         return rtpDtoList;
     }
