@@ -1,5 +1,6 @@
 package com.s1c.rtp.service;
 
+import com.s1c.rtp.repository.CommentsRepository;
 import com.s1c.rtp.repository.RelKeywordRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -20,8 +21,8 @@ class RelKeywordServiceTest {
     @Autowired
     RelKeywordRepository relKeywordRepository;
 
-    @Test
-    void retrieveAllRelKeyword() {
-        System.out.println(relKeywordRepository.findAll().toString());
-    }
+    @Autowired
+    CommentsRepository commentsRepository;
+
+
 }

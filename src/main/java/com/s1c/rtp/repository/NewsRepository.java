@@ -31,6 +31,8 @@ public interface NewsRepository extends JpaRepository<news, Integer>{
     @Query("Select n.newsId from news n where n.brief_article Like concat('%', :keyword, '%') order by n.date desc")
     List<Integer> findNewsIdByKeyword3(@Param("keyword") String keyword);
 
+    @Query("select n.brief_article from news n where n.newsId = :newsId")
+    Page<String> findBriefArticleByNewsId(@Param("newsId") int newsId, Pageable pageable);
 
 
 

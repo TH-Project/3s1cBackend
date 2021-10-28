@@ -36,6 +36,9 @@ public interface CommentsRepository extends JpaRepository<comments, Integer>{
     @Query("select new com.s1c.rtp.dto.CommentsDto2(c.news_comments.newsId, count(c.news_comments.newsId), c.news_comments.title) from comments c group by c.news_comments.newsId order by count(c.news_comments.newsId) desc")
     List<CommentsDto2> returnNewsIdNNumofComments();
 
+    @Query("select new com.s1c.rtp.dto.CommentsDto3(count(c), c.news_comments.newsId) from comments c where c.contents Like concat('%', :keyword, '%') group by c.news_comments.newsId order by count(c) desc")
+    Page<CommentsDto3> getCountByKeyword(@Param("keyword") String keyword, Pageable pageable);
+
 
 //    @Query("select new com.s1c.rtp.dto.GroupByDto(:numOfComments, :numOfWriters) from comments c")
 //    List<GroupByDto> returnWritersNComments(@Param("numOfComments") Long numOfComments, @Param("numOfWriters") Long numOfWriters);

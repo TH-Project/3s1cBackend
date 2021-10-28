@@ -4,12 +4,11 @@ package com.s1c.rtp.controller;
 import java.util.HashMap;
 import java.util.List;
 
-import com.s1c.rtp.dto.NewsDto;
-import com.s1c.rtp.dto.RelKeywordDto;
-import com.s1c.rtp.dto.Test2dto;
-import com.s1c.rtp.dto.Test3dto;
+import com.s1c.rtp.dto.*;
 import com.s1c.rtp.entity.TestEntity;
 import com.s1c.rtp.entity.relkeywords;
+import com.s1c.rtp.repository.CommentsRepository;
+import com.s1c.rtp.service.CommentsService;
 import com.s1c.rtp.service.NewsService;
 import com.s1c.rtp.service.RelKeywordService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +26,15 @@ public class TestController {
 
     @Autowired
     RelKeywordService relKeywordService;
+
+    @Autowired
+    CommentsRepository commentsRepository;
+
+    @Autowired
+    CommentsService commentsService;
+
+    @Autowired
+    NewsService newsService;
 
 
 
@@ -52,12 +60,8 @@ public class TestController {
         return testService.getAllTest3dtoList();
     }
 
-
-    @GetMapping("/relkeywords")
-    public List<relkeywords> retriveAllRelkeywords() {
-        return relKeywordService.retrieveAllRelKeyword();
+    @GetMapping("/{keyword}/test")
+    public List<String> retrieveNewsIdByKeyword2(@PathVariable("keyword") String keyword) {
+        return newsService.retrieveNewsIdByKeyword2(keyword);
     }
-
-
-
 }

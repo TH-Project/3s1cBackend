@@ -1,13 +1,7 @@
 package com.s1c.rtp.service;
 
-import com.s1c.rtp.dto.AgeDto;
-import com.s1c.rtp.dto.GenderDto;
-import com.s1c.rtp.dto.GroupByDto;
-import com.s1c.rtp.dto.NewsDto;
-import com.s1c.rtp.repository.AgeRepository;
-import com.s1c.rtp.repository.GenderRepository;
-import com.s1c.rtp.repository.KeywordRepository;
-import com.s1c.rtp.repository.NewsRepository;
+import com.s1c.rtp.dto.*;
+import com.s1c.rtp.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -15,7 +9,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 
 @Service
@@ -36,14 +32,64 @@ public class NewsService {
     @Autowired
     RelKeywordService relKeywordService;
 
+    @Autowired
+    CommentsRepository commentsRepository;
+
     @Transactional
     public Page<String> retrieveBriefNewsByKeyword(String keyword) {
 
         String key = keywordRepository.findKeywordByKeyword(keyword);
         Pageable pageable = PageRequest.of(0, 1);
 
-        return newsRepository.findBriefArticleByKeyword(key, pageable);
+        Page<String> brifNews = newsRepository.findBriefArticleByKeyword(key, pageable);
+
+        if (brifNews.getTotalElements() == 0){ // news
+            int newsId = retrieveNewsIdByKeyword(keyword);
+
+            if(newsId ==-99){
+                return brifNews;
+            }
+            Page<String> brifNews2 = retrieveNewsByNewsId(newsId);
+            return  brifNews2;
+        }
+
+        return brifNews;
     }
+
+    @Transactional
+    public int retrieveNewsIdByKeyword(String keyword) {
+        Pageable pageable = PageRequest.of(0, 1);
+        Page<CommentsDto3> list = commentsRepository.getCountByKeyword(keyword, pageable);
+
+        int newsId =-99;
+        for(CommentsDto3 dto : list) {
+            newsId =dto.getNewsId();
+        }
+        return newsId;
+    }
+
+    @Transactional
+    public Page<String> retrieveNewsByNewsId(int newsId) {
+        Pageable pageable = PageRequest.of(0, 1);
+        Page<String> brifNews2 = newsRepository.findBriefArticleByNewsId(newsId, pageable);
+
+        for(Iterator<String> it = brifNews2.iterator(); it.hasNext() ;) {
+            String string = it.next();
+            if(string.equals("")) {
+                it.remove();;
+            }
+        }
+
+        return brifNews2;
+    }
+
+    @Transactional
+    public List<String> retrieveNewsIdByKeyword2(String keyword) { // For testing Api
+        Page<String> list = retrieveNewsByNewsId(retrieveNewsIdByKeyword(keyword));
+        List<String> newlist = list.getContent();
+        return newlist;
+    }
+
 
     @Transactional
     public HashMap<String, Double> retrieveGenderRatioByKeyword(String keyword) {
