@@ -9,7 +9,7 @@ import java.sql.Timestamp;
 @Getter
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@ToString(of= {"today_comments" ,"today_news" ,"week_comments" ,"week_news" ,"hist_comments" ,"hist_news"})
+@ToString(of= {"today_comments" ,"today_news" ,"hist_comments" ,"hist_news","hist_writers","today_writers"})
 public class WholeDataNum {
 
     @Id @GeneratedValue
