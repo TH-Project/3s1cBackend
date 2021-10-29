@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.sql.Timestamp;
 
-public interface WholeDataRepository extends JpaRepository<WholeDataNum, Timestamp> {
+public interface WholeDataRepository extends JpaRepository<WholeDataNum, Integer> {
 
 //    @Modifying
 //    @Query("update WholeDataNum w set w.today = current_timestamp")
