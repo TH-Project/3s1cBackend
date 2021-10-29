@@ -28,17 +28,19 @@ public class comments {
     private String writer;
     private int recommended;
     private int unrecommended;
+    private String userNo;
 
     @Temporal(TemporalType.TIMESTAMP)
     private Date date;
 
-    public comments(int commentsId, String contents, String writer, int recommended, int unrecommended, Timestamp date, news news_comments){
+    public comments(int commentsId, String contents, String writer, int recommended, int unrecommended, Timestamp date, news news_comments, String userNo){
         this.commentsId = commentsId;
         this.contents = contents;
         this.writer = writer;
         this.recommended = recommended;
         this.unrecommended = unrecommended;
         this.date = date;
+        this.userNo = userNo;
 
         if (news_comments!=null){
             changeNews(news_comments);
