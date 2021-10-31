@@ -34,6 +34,9 @@ public interface NewsRepository extends JpaRepository<news, Integer>{
     @Query("select n.brief_article from news n where n.newsId = :newsId")
     Page<String> findBriefArticleByNewsId(@Param("newsId") int newsId, Pageable pageable);
 
+    @Query("select n.newsId from news n")
+    List<Integer> findAllNewsId();
+
 
 
 }

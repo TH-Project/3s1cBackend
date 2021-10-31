@@ -154,6 +154,11 @@ public class AnalysisController {
         return wholeDataService.returnNumOfWholeData();
     }
 
+    @GetMapping("/analysis/gender-age-statistics")
+    public GenderAgeDto returnGenderAgeStatistic() {
+        return newsService.returnGenderAgeStatistics();
+    }
+
 
 
 

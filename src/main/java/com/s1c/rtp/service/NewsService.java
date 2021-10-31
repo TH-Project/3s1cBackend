@@ -173,5 +173,44 @@ public class NewsService {
         return hashMap;
     }
 
+    @Transactional
+    public GenderAgeDto returnGenderAgeStatistics() {
+        List<Integer> newsIdList = newsRepository.findAllNewsId();
+        int newsIdSize = newsIdList.size();
+        double avg_male = 0;
+        double avg_female = 0;
+        double avg_tens = 0;
+        double avg_twenties = 0;
+        double avg_thirties = 0;
+        double avg_fourties = 0;
+        double avg_fifties = 0;
+        double avg_sixties = 0;
+
+        for (Integer newsId : newsIdList) {
+            GenderDto2 tempGender = genderRepository.findGenderStatistics(newsId);
+            AgeDto2 tempAge = ageRepository.findAgeStatistics(newsId);
+
+            avg_male += tempGender.getAvg_male();
+            avg_female += tempGender.getAvg_female();
+            avg_tens += tempAge.getAvg_tens();
+            avg_twenties += tempAge.getAvg_twenties();
+            avg_thirties += tempAge.getAvg_thirties();
+            avg_fourties += tempAge.getAvg_fourties();
+            avg_fifties += tempAge.getAvg_fifties();
+            avg_sixties += tempAge.getAvg_sixties();
+        }
+
+        avg_male = avg_male / newsIdSize;
+        avg_female = avg_female / newsIdSize;
+        avg_tens = avg_tens / newsIdSize;
+        avg_twenties = avg_twenties / newsIdSize;
+        avg_thirties = avg_thirties / newsIdSize;
+        avg_fourties = avg_fourties / newsIdSize;
+        avg_fifties = avg_fifties / newsIdSize;
+        avg_sixties = avg_sixties / newsIdSize;
+
+        return new GenderAgeDto(avg_male, avg_female, avg_tens, avg_twenties, avg_thirties, avg_fourties, avg_fifties, avg_sixties);
+    }
+
 
 }
