@@ -8,7 +8,7 @@
 [프로젝트 구성]
 1. Backend
 2. <a href="https://github.com/CSID-DGU/3S1C_frontend/tree/359ee640e65d83b68986a23eefa58104f1473afe"> front end</a> [sub module]
-3. <a hrefc="https://github.com/LuneRemer/CrawlingModule_NaverNews.git"> clawling module</a> [sub module]
+3. <a href="https://github.com/LuneRemer/CrawlingModule_NaverNews.git"> clawling module</a> [sub module]
 
 산학연계 멘토 : 하 광림 기술사
 
