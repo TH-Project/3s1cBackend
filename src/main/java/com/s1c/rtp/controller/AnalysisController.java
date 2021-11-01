@@ -43,117 +43,117 @@ public class AnalysisController {
     RelKeywordService relKeywordService;
 
     @GetMapping("/real-time-popularity/news/all")
-    public List<news> retrieveAllNews(){
+    public List<news> getAllNews(){
         return newsRepository.findAll();
     }
 
     @GetMapping("/real-time-popularity/gender/all")
-    public List<genderanalysis> retrieveAllGender(){
+    public List<genderanalysis> getAllGender(){
         return genderRepository.findAll();
     }
 
     @GetMapping("/real-time-popularity/genderDto/all")
-    public List<GenderDto> retrieveAllGenderDto(){
+    public List<GenderDto> getAllGenderDto(){
         return genderRepository.findGenderDto();
     }
 
     @GetMapping("/real-time-popularity/commentsDto/withNews")
-    public List<CommentsDto> returnCommentsWithNews(){
+    public List<CommentsDto> getCommentsWithNews(){
         return commentsRepository.findCommentsWithNews();
     }
 
     @GetMapping("/analysis/total-number-comments")
-    public Long returnNumOfComments(){
+    public Long getNumOfComments(){
         return wholeDataService.findNumOfComments();
     }
 
     @GetMapping("/analysis/total-number-news")
-    public Long returnNumOfNews(){
+    public Long getNumOfNews(){
         return wholeDataService.findNumOfNews();
     }
 
     @GetMapping("/analysis/total-number-writers")
-    public Long returnNumOfWriters(){ return commentsService.findNumOfWriters(); }
+    public Long getNumOfWriters(){ return commentsService.findNumOfWriters(); }
 
     @GetMapping("/analysis/WritersNComments")
-    public GroupByDto returnNumOfWritersNComments(){ return commentsService.findNumOfWritersNComments(); }
+    public GroupByDto getNumOfWritersNComments(){ return commentsService.findNumOfWritersNComments(); }
 
     @GetMapping("/analysis/keywords/bigger-than-rate/{rate}")
-    public List<KeywordDto> returnBiggerThanRate(@PathVariable("rate") double rate){
+    public List<KeywordDto> getBiggerThanRate(@PathVariable("rate") double rate){
         return keywordService.findBiggerThanRate(rate);
     }
 
     @GetMapping("/analysis/keywords/bigger-than-count/{count}")
-    public List<KeywordDto> returnBiggerThanCount(@PathVariable("count") int count){
+    public List<KeywordDto> getBiggerThanCount(@PathVariable("count") int count){
         return keywordService.findBiggerThanCount(count);
     }
 
     @GetMapping("/analysis/comments/time-graph")
-    public JSONObject returnTimeGraph(){
+    public JSONObject getTimeGraph(){
         return commentsService.findCommentsNTime();
     }
 
     @GetMapping("/keywords/{keyword}/news-summary")
-    public Page<String> retrieveBreifNews(@PathVariable("keyword") String keyword) {
+    public Page<String> getBreifNews(@PathVariable("keyword") String keyword) {
         return newsService.findBriefNewsByKeyword(keyword);
     }
 
     @GetMapping("/keywords/{keyword}/gender-ratio")
-    public HashMap<String, Double> retrieveGenderRatio(@PathVariable("keyword") String keyword) {
+    public HashMap<String, Double> getGenderRatio(@PathVariable("keyword") String keyword) {
         return newsService.findGenderRatioByKeyword(keyword);
     }
 
     @GetMapping("/keywords/{keyword}/age-ratio")
-    public HashMap<String, Double> retrieveAgeRatio(@PathVariable("keyword") String keyword) {
+    public HashMap<String, Double> getAgeRatio(@PathVariable("keyword") String keyword) {
         return newsService.findAgeRatioByKeyword(keyword);
     }
 
     @GetMapping("/real-time-popularity")
-    public List<RtpDto> retriveAllPopularity() {
+    public List<RtpDto> getAllPopularity() {
         return  keywordService.findRealTimePopularity();
     }
 
     @GetMapping("/keywords/{keyword}/ranks-mentions")
-    public HashMap<String, Integer> retrieveRanksAndMetions(@PathVariable("keyword") String keyword) {
+    public HashMap<String, Integer> getRanksAndMetions(@PathVariable("keyword") String keyword) {
         return keywordService.findRanksAndMentions(keyword);
     }
 
     @GetMapping("/keywords/{keyword}/related-articles")
-    public List<RelatedNewsDto> retrieveRelatedArticles(@PathVariable("keyword") String keyword) {
+    public List<RelatedNewsDto> getRelatedArticles(@PathVariable("keyword") String keyword) {
         return keywordService.findRelatedArticles(keyword);
     }
     @GetMapping("/analysis/users/heavy-user")
-    public Page<CommentsUserDto> retrieveHeavyUser() {
+    public Page<CommentsUserDto> getHeavyUser() {
         return commentsService.findHeavyUser();
     }
 
     @GetMapping("/analysis/having-many-comments")
-    public List<CommentsDto2> retrieveNewsManyComments() {
+    public List<CommentsDto2> getNewsManyComments() {
         return commentsService.findNewsHasManyCommentsTopThree();
     }
 
     @GetMapping("/keywords/{keyword}/emoticon-analysis")
-    public KeywordDto2 returnKeywordEmoticon(@PathVariable("keyword") String keyword) {
+    public KeywordDto2 getKeywordEmoticon(@PathVariable("keyword") String keyword) {
         return keywordService.findKeywordEmoticon(keyword);
     }
 
     @GetMapping("/keywords/{keyword}/wordcloud")
-    public List<RelKeywordDto> retriveRelkeywordByKeyword(@PathVariable("keyword") String keyword) {
+    public List<RelKeywordDto> getRelkeywordByKeyword(@PathVariable("keyword") String keyword) {
         return relKeywordService.findRelkeywordByKeyword(keyword);
     }
 
     @GetMapping("/keywords/{keyword}/tags")
-    public List<String> retrieveRelatedKeyword(@PathVariable("keyword") String keyword) {
+    public List<String> getRelatedKeyword(@PathVariable("keyword") String keyword) {
         return relKeywordService.findRelatedKeyword(keyword);
     }
 
     @GetMapping("/analysis/cumulative-statistics")
-    public WholeDataDto2 returnCumulativeStatistic() {
+    public WholeDataDto2 getCumulativeStatistic() {
         return wholeDataService.findNumOfWholeData();
     }
 
     @GetMapping("/analysis/gender-age-statistics")
-    public GenderAgeDto returnGenderAgeStatistic() {
+    public GenderAgeDto getGenderAgeStatistic() {
         return newsService.findGenderAgeStatistics();
     }
 
