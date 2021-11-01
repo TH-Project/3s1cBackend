@@ -1,6 +1,5 @@
 package com.s1c.rtp.controller;
 
-import java.util.HashMap;
 import java.util.List;
 
 import com.s1c.rtp.dto.*;
@@ -93,35 +92,11 @@ public class AnalysisController {
         return commentsService.findCommentsNTime();
     }
 
-    @GetMapping("/keywords/{keyword}/news-summary")
-    public Page<String> getBreifNews(@PathVariable("keyword") String keyword) {
-        return newsService.findBriefNewsByKeyword(keyword);
-    }
-
-    @GetMapping("/keywords/{keyword}/gender-ratio")
-    public HashMap<String, Double> getGenderRatio(@PathVariable("keyword") String keyword) {
-        return newsService.findGenderRatioByKeyword(keyword);
-    }
-
-    @GetMapping("/keywords/{keyword}/age-ratio")
-    public HashMap<String, Double> getAgeRatio(@PathVariable("keyword") String keyword) {
-        return newsService.findAgeRatioByKeyword(keyword);
-    }
-
     @GetMapping("/real-time-popularity")
     public List<RtpDto> getAllPopularity() {
         return  keywordService.findRealTimePopularity();
     }
 
-    @GetMapping("/keywords/{keyword}/ranks-mentions")
-    public HashMap<String, Integer> getRanksAndMetions(@PathVariable("keyword") String keyword) {
-        return keywordService.findRanksAndMentions(keyword);
-    }
-
-    @GetMapping("/keywords/{keyword}/related-articles")
-    public List<RelatedNewsDto> getRelatedArticles(@PathVariable("keyword") String keyword) {
-        return keywordService.findRelatedArticles(keyword);
-    }
     @GetMapping("/analysis/users/heavy-user")
     public Page<CommentsUserDto> getHeavyUser() {
         return commentsService.findHeavyUser();
@@ -130,21 +105,6 @@ public class AnalysisController {
     @GetMapping("/analysis/having-many-comments")
     public List<CommentsDto2> getNewsManyComments() {
         return commentsService.findNewsHasManyCommentsTopThree();
-    }
-
-    @GetMapping("/keywords/{keyword}/emoticon-analysis")
-    public KeywordDto2 getKeywordEmoticon(@PathVariable("keyword") String keyword) {
-        return keywordService.findKeywordEmoticon(keyword);
-    }
-
-    @GetMapping("/keywords/{keyword}/wordcloud")
-    public List<RelKeywordDto> getRelkeywordByKeyword(@PathVariable("keyword") String keyword) {
-        return relKeywordService.findRelkeywordByKeyword(keyword);
-    }
-
-    @GetMapping("/keywords/{keyword}/tags")
-    public List<String> getRelatedKeyword(@PathVariable("keyword") String keyword) {
-        return relKeywordService.findRelatedKeyword(keyword);
     }
 
     @GetMapping("/analysis/cumulative-statistics")
@@ -156,9 +116,4 @@ public class AnalysisController {
     public GenderAgeDto getGenderAgeStatistic() {
         return newsService.findGenderAgeStatistics();
     }
-
-
-
-
-
 }
