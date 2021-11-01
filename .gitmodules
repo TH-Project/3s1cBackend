@@ -1,3 +1,6 @@
 [submodule "3S1C_frontend"]
 	path = 3S1C_frontend
 	url = https://github.com/CSID-DGU/3S1C_frontend.git
+[submodule "CrawlingModule_NaverNews"]
+	path = CrawlingModule_NaverNews
+	url = https://github.com/LuneRemer/CrawlingModule_NaverNews.git
