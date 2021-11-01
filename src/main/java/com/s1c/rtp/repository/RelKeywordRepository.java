@@ -16,7 +16,6 @@ public interface RelKeywordRepository extends JpaRepository<relkeywords, relkeyw
     @Query("Select n.newsId from news n where n.brief_article Like concat('%', :keyword, '%') order by n.date desc")
     List<Integer> findNewsIdByKeyword(@Param("keyword") String keyword);
 
-
     @Query("select new com.s1c.rtp.dto.GenderDto(g.genderId, n.newsId, g.male, g.female) from genderanalysis g join g.news_gender n where n.newsId = :newsId")
     GenderDto findGenderDtoByNewsId(@Param("newsId") int newsId);
 

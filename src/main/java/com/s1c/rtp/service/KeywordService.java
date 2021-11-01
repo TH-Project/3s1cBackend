@@ -85,7 +85,6 @@ public class KeywordService {
                 brefNews =  brefList.get(0);
             }
 
-//            int keywordId = keywordDto.getKeywordId(); 적절한 동작안함. 임의 id로 대체
             String keyword = keywordDto.getKeyword();
             int rank = keywordDto.getRanks();
             double positive = keywordDto.getPositive();
