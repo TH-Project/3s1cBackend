@@ -1,18 +1,15 @@
 package com.s1c.rtp.controller;
 
 
-import java.util.HashMap;
 import java.util.List;
 
 import com.s1c.rtp.dto.*;
-import com.s1c.rtp.entity.TestEntity;
-import com.s1c.rtp.entity.relkeywords;
+import com.s1c.rtp.entity.testentity;
 import com.s1c.rtp.repository.CommentsRepository;
 import com.s1c.rtp.service.CommentsService;
 import com.s1c.rtp.service.NewsService;
 import com.s1c.rtp.service.RelKeywordService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.*;
 import com.s1c.rtp.service.TestService;
 
@@ -39,7 +36,7 @@ public class TestController {
 
 
     @GetMapping("/test")
-    public List<TestEntity> retriveTestPopularity() {
+    public List<testentity> retriveTestPopularity() {
         return  testService.getAllTestList();
     }
 
@@ -57,11 +54,11 @@ public class TestController {
     }
     @GetMapping("/real-time-popularity/cumulative-statics")
     public Test3dto retriveAllCumulativeStatics() {
-        return testService.getAllTest3dtoList();
+        return testService.findAllTest3dtoList();
     }
 
     @GetMapping("/{keyword}/test")
     public List<String> retrieveNewsIdByKeyword2(@PathVariable("keyword") String keyword) {
-        return newsService.retrieveNewsIdByKeyword2(keyword);
+        return newsService.findNewsIdByKeyword2(keyword);
     }
 }

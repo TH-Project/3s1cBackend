@@ -2,7 +2,7 @@ package com.s1c.rtp.service;
 
 import com.s1c.rtp.dto.Test2dto;
 import com.s1c.rtp.dto.Test3dto;
-import com.s1c.rtp.entity.TestEntity;
+import com.s1c.rtp.entity.testentity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,13 +19,13 @@ public class TestService {
     TestRepository testRepository;
 
     @Transactional
-    public List<TestEntity> getAllTestList() {
+    public List<testentity> getAllTestList() {
         return testRepository.findAll();
     }
 
 
     @Transactional
-    public List<Test2dto> getAllTest2dtoList() {
+    public List<Test2dto> findAllTest2dtoList() {
 
         int id1 = 1;
         String keyword1 = "COVID19";
@@ -178,7 +178,7 @@ public class TestService {
     }
 
     @Transactional
-    public Test3dto getAllTest3dtoList() {
+    public Test3dto findAllTest3dtoList() {
 
         int comment1 = 275631;
         int article1 = 1121;

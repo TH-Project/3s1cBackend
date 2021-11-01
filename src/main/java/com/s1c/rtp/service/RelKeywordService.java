@@ -25,7 +25,7 @@ public class RelKeywordService {
     }
 
     @Transactional
-    public List<RelKeywordDto> retrieveRelkeywordByKeyword(String keyword) {
+    public List<RelKeywordDto> findRelkeywordByKeyword(String keyword) {
         List<RelKeywordDto> list = relKeywordRepository.retrieveRelKeywordsBykeyword(keyword);
 
         for(Iterator<RelKeywordDto> it = list.iterator() ; it.hasNext() ;) {
@@ -39,7 +39,7 @@ public class RelKeywordService {
     }
 
     @Transactional
-    public List<String> retrieveRelatedKeyword(String keyword) {
+    public List<String> findRelatedKeyword(String keyword) {
         List<RelKeywordDto> list = relKeywordRepository.retrieveRelKeywordsBykeyword(keyword);
 
         for(Iterator<RelKeywordDto> it = list.iterator() ; it.hasNext() ;) {

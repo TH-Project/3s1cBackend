@@ -1,6 +1,5 @@
 package com.s1c.rtp.service;
 
-
 import com.s1c.rtp.dto.*;
 import com.s1c.rtp.repository.WholeDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,17 +13,17 @@ public class WholeDataService {
     WholeDataRepository wholeDataRepository;
 
     @Transactional
-    public WholeDataDto2 returnNumOfWholeData(){
+    public WholeDataDto2 findNumOfWholeData(){
         return wholeDataRepository.returnWholeDataNum();
     }
 
     @Transactional
-    public Long returnNumOfComments(){
+    public Long findNumOfComments(){
         return wholeDataRepository.numOfCommentsData();
     }
 
     @Transactional
-    public Long returnNumOfNews(){
+    public Long findNumOfNews(){
         return wholeDataRepository.numOfNewsData();
     }
 }

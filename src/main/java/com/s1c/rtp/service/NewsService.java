@@ -35,7 +35,7 @@ public class NewsService {
     CommentsRepository commentsRepository;
 
     @Transactional
-    public Page<String> retrieveBriefNewsByKeyword(String keyword) {
+    public Page<String> findBriefNewsByKeyword(String keyword) {
 
         String key = keywordRepository.findKeywordByKeyword(keyword);
         Pageable pageable = PageRequest.of(0, 1);
@@ -43,12 +43,12 @@ public class NewsService {
         Page<String> brifNews = newsRepository.findBriefArticleByKeyword(key, pageable);
 
         if (brifNews.getTotalElements() == 0){ // news
-            int newsId = retrieveNewsIdByKeyword(keyword);
+            int newsId = findNewsIdByKeyword(keyword);
 
             if(newsId ==-99){
                 return brifNews;
             }
-            Page<String> brifNews2 = retrieveNewsByNewsId(newsId);
+            Page<String> brifNews2 = findNewsByNewsId(newsId);
             return  brifNews2;
         }
 
@@ -56,7 +56,7 @@ public class NewsService {
     }
 
     @Transactional
-    public int retrieveNewsIdByKeyword(String keyword) {
+    public int findNewsIdByKeyword(String keyword) {
         Pageable pageable = PageRequest.of(0, 1);
         Page<CommentsDto3> list = commentsRepository.getCountByKeyword(keyword, pageable);
 
@@ -68,7 +68,7 @@ public class NewsService {
     }
 
     @Transactional
-    public Page<String> retrieveNewsByNewsId(int newsId) {
+    public Page<String> findNewsByNewsId(int newsId) {
         Pageable pageable = PageRequest.of(0, 1);
         Page<String> brifNews2 = newsRepository.findBriefArticleByNewsId(newsId, pageable);
 
@@ -82,16 +82,18 @@ public class NewsService {
         return brifNews2;
     }
 
+    // For testing Api
+    // Keyword extraction using different algorithm.
     @Transactional
-    public List<String> retrieveNewsIdByKeyword2(String keyword) { // For testing Api
-        Page<String> list = retrieveNewsByNewsId(retrieveNewsIdByKeyword(keyword));
+    public List<String> findNewsIdByKeyword2(String keyword) {
+        Page<String> list = findNewsByNewsId(findNewsIdByKeyword(keyword));
         List<String> newlist = list.getContent();
         return newlist;
     }
 
 
     @Transactional
-    public HashMap<String, Double> retrieveGenderRatioByKeyword(String keyword) {
+    public HashMap<String, Double> findGenderRatioByKeyword(String keyword) {
 
         HashMap<String, Double> hashMap = new HashMap<>();
         String key = keywordRepository.findKeywordByKeyword(keyword);
@@ -122,7 +124,7 @@ public class NewsService {
     }
 
     @Transactional
-    public HashMap<String, Double> retrieveAgeRatioByKeyword(String keyword) {
+    public HashMap<String, Double> findAgeRatioByKeyword(String keyword) {
 
         HashMap<String, Double> hashMap = new HashMap<>();
         String key = keywordRepository.findKeywordByKeyword(keyword);
@@ -173,7 +175,7 @@ public class NewsService {
     }
 
     @Transactional
-    public GenderAgeDto returnGenderAgeStatistics() {
+    public GenderAgeDto findGenderAgeStatistics() {
         List<Integer> newsIdList = newsRepository.findAllNewsId();
         int newsIdSize = newsIdList.size();
         double avg_male = 0;

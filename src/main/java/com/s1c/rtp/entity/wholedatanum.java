@@ -10,7 +10,8 @@ import java.sql.Timestamp;
 @Setter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString(of= {"today_comments" ,"today_news" ,"hist_comments" ,"hist_news","hist_writers","today_writers"})
-public class WholeDataNum {
+@Table(name="whole_data_num")
+public class wholedatanum {
 
     @Id @GeneratedValue
     private int id;
@@ -23,7 +24,7 @@ public class WholeDataNum {
     private Long hist_comments;
     private Long hist_news;
 
-    public WholeDataNum(int id, Long today_comments, Long today_news, Long today_writers, Long hist_comments, Long hist_news, Long hist_writers){
+    public wholedatanum(int id, Long today_comments, Long today_news, Long today_writers, Long hist_comments, Long hist_news, Long hist_writers){
         this.id = id;
         this.today_comments = today_comments;
         this.today_news = today_news;

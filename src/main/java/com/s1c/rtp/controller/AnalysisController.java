@@ -64,97 +64,97 @@ public class AnalysisController {
 
     @GetMapping("/analysis/total-number-comments")
     public Long returnNumOfComments(){
-        return wholeDataService.returnNumOfComments();
+        return wholeDataService.findNumOfComments();
     }
 
     @GetMapping("/analysis/total-number-news")
     public Long returnNumOfNews(){
-        return wholeDataService.returnNumOfNews();
+        return wholeDataService.findNumOfNews();
     }
 
     @GetMapping("/analysis/total-number-writers")
-    public Long returnNumOfWriters(){ return commentsService.returnNumOfWriters(); }
+    public Long returnNumOfWriters(){ return commentsService.findNumOfWriters(); }
 
     @GetMapping("/analysis/WritersNComments")
-    public GroupByDto returnNumOfWritersNComments(){ return commentsService.returnNumOfWritersNComments(); }
+    public GroupByDto returnNumOfWritersNComments(){ return commentsService.findNumOfWritersNComments(); }
 
     @GetMapping("/analysis/keywords/bigger-than-rate/{rate}")
     public List<KeywordDto> returnBiggerThanRate(@PathVariable("rate") double rate){
-        return keywordService.returnBiggerThanRate(rate);
+        return keywordService.findBiggerThanRate(rate);
     }
 
     @GetMapping("/analysis/keywords/bigger-than-count/{count}")
     public List<KeywordDto> returnBiggerThanCount(@PathVariable("count") int count){
-        return keywordService.returnBiggerThanCount(count);
+        return keywordService.findBiggerThanCount(count);
     }
 
     @GetMapping("/analysis/comments/time-graph")
     public JSONObject returnTimeGraph(){
-        return commentsService.returnCommentsNTime();
+        return commentsService.findCommentsNTime();
     }
 
     @GetMapping("/keywords/{keyword}/news-summary")
     public Page<String> retrieveBreifNews(@PathVariable("keyword") String keyword) {
-        return newsService.retrieveBriefNewsByKeyword(keyword);
+        return newsService.findBriefNewsByKeyword(keyword);
     }
 
     @GetMapping("/keywords/{keyword}/gender-ratio")
     public HashMap<String, Double> retrieveGenderRatio(@PathVariable("keyword") String keyword) {
-        return newsService.retrieveGenderRatioByKeyword(keyword);
+        return newsService.findGenderRatioByKeyword(keyword);
     }
 
     @GetMapping("/keywords/{keyword}/age-ratio")
     public HashMap<String, Double> retrieveAgeRatio(@PathVariable("keyword") String keyword) {
-        return newsService.retrieveAgeRatioByKeyword(keyword);
+        return newsService.findAgeRatioByKeyword(keyword);
     }
 
     @GetMapping("/real-time-popularity")
     public List<RtpDto> retriveAllPopularity() {
-        return  keywordService.returnRealTimePopularity();
+        return  keywordService.findRealTimePopularity();
     }
 
     @GetMapping("/keywords/{keyword}/ranks-mentions")
     public HashMap<String, Integer> retrieveRanksAndMetions(@PathVariable("keyword") String keyword) {
-        return keywordService.retrieveRanksAndMentions(keyword);
+        return keywordService.findRanksAndMentions(keyword);
     }
 
     @GetMapping("/keywords/{keyword}/related-articles")
     public List<RelatedNewsDto> retrieveRelatedArticles(@PathVariable("keyword") String keyword) {
-        return keywordService.retrieveRelatedArticles(keyword);
+        return keywordService.findRelatedArticles(keyword);
     }
     @GetMapping("/analysis/users/heavy-user")
     public Page<CommentsUserDto> retrieveHeavyUser() {
-        return commentsService.retrieveHeavyUser();
+        return commentsService.findHeavyUser();
     }
 
     @GetMapping("/analysis/having-many-comments")
     public List<CommentsDto2> retrieveNewsManyComments() {
-        return commentsService.returnNewsHasManyCommentsTopThree();
+        return commentsService.findNewsHasManyCommentsTopThree();
     }
 
     @GetMapping("/keywords/{keyword}/emoticon-analysis")
     public KeywordDto2 returnKeywordEmoticon(@PathVariable("keyword") String keyword) {
-        return keywordService.returnKeywordEmoticon(keyword);
+        return keywordService.findKeywordEmoticon(keyword);
     }
 
     @GetMapping("/keywords/{keyword}/wordcloud")
     public List<RelKeywordDto> retriveRelkeywordByKeyword(@PathVariable("keyword") String keyword) {
-        return relKeywordService.retrieveRelkeywordByKeyword(keyword);
+        return relKeywordService.findRelkeywordByKeyword(keyword);
     }
 
     @GetMapping("/keywords/{keyword}/tags")
     public List<String> retrieveRelatedKeyword(@PathVariable("keyword") String keyword) {
-        return relKeywordService.retrieveRelatedKeyword(keyword);
+        return relKeywordService.findRelatedKeyword(keyword);
     }
 
     @GetMapping("/analysis/cumulative-statistics")
     public WholeDataDto2 returnCumulativeStatistic() {
-        return wholeDataService.returnNumOfWholeData();
+        return wholeDataService.findNumOfWholeData();
     }
 
     @GetMapping("/analysis/gender-age-statistics")
     public GenderAgeDto returnGenderAgeStatistic() {
-        return newsService.returnGenderAgeStatistics();
+        return newsService.findGenderAgeStatistics();
     }
 
 

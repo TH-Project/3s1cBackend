@@ -39,7 +39,7 @@ public class KeywordService {
     RelKeywordService relKeywordService;
 
     @Transactional
-    public List<KeywordDto> returnBiggerThanRate(double rate){
+    public List<KeywordDto> findBiggerThanRate(double rate){
         List<KeywordDto> listKeyword = keywordRepository.findAllKeyword();
         ArrayList<KeywordDto> listBiggerThanRate = new ArrayList<KeywordDto>();
         for(KeywordDto obj : listKeyword){
@@ -51,7 +51,7 @@ public class KeywordService {
     }
 
     @Transactional
-    public List<KeywordDto> returnBiggerThanCount(int count){
+    public List<KeywordDto> findBiggerThanCount(int count){
         List<KeywordDto> listKeyword = keywordRepository.findAllKeyword();
         ArrayList<KeywordDto> listBiggerThanCount = new ArrayList<KeywordDto>();
         for(KeywordDto obj : listKeyword){
@@ -63,7 +63,7 @@ public class KeywordService {
     }
 
     @Transactional
-    public List<RtpDto> returnRealTimePopularity() {
+    public List<RtpDto> findRealTimePopularity() {
         Pageable pageableSize20 = PageRequest.of(0, 15);
         Page<KeywordDto> keywordDtos = keywordRepository.findTopKeyword(pageableSize20);
         List<RtpDto> rtpDtoList = new ArrayList<>();
@@ -71,10 +71,10 @@ public class KeywordService {
 
         for(KeywordDto keywordDto : keywordDtos) {
 
-            Page<String> pageBrefNews = newsService.retrieveBriefNewsByKeyword(keywordDto.getKeyword());
-            HashMap<String, Double> genderRatio = newsService.retrieveGenderRatioByKeyword(keywordDto.getKeyword());
-            HashMap<String, Double> ageRatio = newsService.retrieveAgeRatioByKeyword(keywordDto.getKeyword());
-            List<String> tags = relKeywordService.retrieveRelatedKeyword(keywordDto.getKeyword());
+            Page<String> pageBrefNews = newsService.findBriefNewsByKeyword(keywordDto.getKeyword());
+            HashMap<String, Double> genderRatio = newsService.findGenderRatioByKeyword(keywordDto.getKeyword());
+            HashMap<String, Double> ageRatio = newsService.findAgeRatioByKeyword(keywordDto.getKeyword());
+            List<String> tags = relKeywordService.findRelatedKeyword(keywordDto.getKeyword());
 
             List<String> brefList = pageBrefNews.getContent();
             String brefNews;
@@ -102,7 +102,7 @@ public class KeywordService {
     }
 
     @Transactional
-    public HashMap<String, Integer> retrieveRanksAndMentions(String keyword) {
+    public HashMap<String, Integer> findRanksAndMentions(String keyword) {
 
         HashMap<String, Integer> hashMap = new HashMap<>();
         String key = keywordRepository.findKeywordByKeyword(keyword);
@@ -118,7 +118,7 @@ public class KeywordService {
     }
 
     @Transactional
-    public List<RelatedNewsDto> retrieveRelatedArticles(String keyword) {
+    public List<RelatedNewsDto> findRelatedArticles(String keyword) {
 
         Pageable pageableSize3 = PageRequest.of(0, 3);
         Page<Integer> newsIdDtos =newsRepository.findNewsIdByKeyword2(keyword, pageableSize3);
@@ -140,7 +140,7 @@ public class KeywordService {
     }
 
     @Transactional
-    public KeywordDto2 returnKeywordEmoticon(String keyword) {
+    public KeywordDto2 findKeywordEmoticon(String keyword) {
         int like = 0;
         int sad = 0;
         int angry = 0;

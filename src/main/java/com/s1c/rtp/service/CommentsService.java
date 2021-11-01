@@ -23,7 +23,7 @@ public class CommentsService {
     WholeDataRepository wholeDataRepository;
 
     @Transactional
-    public GroupByDto returnNumOfWritersNComments() {
+    public GroupByDto findNumOfWritersNComments() {
         Long numOfComments = wholeDataRepository.numOfCommentsData();
         Long numOfWriters = commentsRepository.returnNumOfWriters();
 
@@ -31,14 +31,14 @@ public class CommentsService {
     }
 
     @Transactional
-    public Long returnNumOfWriters() {        
+    public Long findNumOfWriters() {
         Long numWriters = commentsRepository.returnNumOfWriters();
 
         return numWriters;
     }
 
     @Transactional
-    public JSONObject returnCommentsNTime() {
+    public JSONObject findCommentsNTime() {
         int zero, one, two, three, four, five, six, seven, eight, nine, ten;
         int eleven, twelve, thirteen, fourteen, fifteen, sixteen, seventeen, eighteen, nineteen, twenty;
         int twentyOne, twentyTwo, twentyThree;
@@ -132,7 +132,7 @@ public class CommentsService {
     }
 
     @Transactional
-    public List<CommentsDto2> returnNewsHasManyCommentsTopThree() {
+    public List<CommentsDto2> findNewsHasManyCommentsTopThree() {
         List<CommentsDto2> commentsDto2s = commentsRepository.returnNewsIdNNumofComments();
         List<CommentsDto2> topThree = new ArrayList<CommentsDto2>();
 
@@ -143,7 +143,7 @@ public class CommentsService {
     }
 
     @Transactional
-    public Page<CommentsUserDto> retrieveHeavyUser() {
+    public Page<CommentsUserDto> findHeavyUser() {
         Pageable pageable = PageRequest.of(0, 20);
         Page<CommentsUserDto> commentsUserList = commentsRepository.retrieveHeavyUser(pageable);
 

@@ -11,7 +11,7 @@ import javax.persistence.*;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @ToString(of= {"keywordId","keyword","positive","negative","rank","mentions"})
 @Table(name = "KEYWORDS")
-public class KEYWORDS {
+public class keywords {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,7 +24,7 @@ public class KEYWORDS {
     private int ranks;
     private int mentions;
 
-    public KEYWORDS(int keywordId, String keyword, double positive, double negative, int ranks, int mentions){
+    public keywords(int keywordId, String keyword, double positive, double negative, int ranks, int mentions){
         this.keywordId = keywordId;
         this.keyword = keyword;
         this.positive = positive;
