@@ -17,5 +17,4 @@ public interface AgeRepository extends JpaRepository<ageanalysis, Integer>{
 
     @Query("select new com.s1c.rtp.dto.AgeDto2(a.tens, a.twenties, a.thirties, a.fourties, a.fifties, a.sixties) from ageanalysis a join a.news_age n where n.newsId= :newsId")
     AgeDto2 findAgeStatistics(@Param("newsId") int newsId);
-
 }

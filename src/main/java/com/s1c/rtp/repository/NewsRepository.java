@@ -1,9 +1,5 @@
 package com.s1c.rtp.repository;
 
-import com.s1c.rtp.dto.KeywordDto;
-import com.s1c.rtp.dto.NewsDto;
-import com.s1c.rtp.dto.NewsDto2;
-import com.s1c.rtp.entity.KEYWORDS;
 import com.s1c.rtp.entity.*;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,7 +8,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.List;
-import java.util.Map;
 
 public interface NewsRepository extends JpaRepository<news, Integer>{
 
@@ -36,8 +31,5 @@ public interface NewsRepository extends JpaRepository<news, Integer>{
 
     @Query("select n.newsId from news n")
     List<Integer> findAllNewsId();
-
-
-
 }
 
