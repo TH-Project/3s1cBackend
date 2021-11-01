@@ -5,6 +5,11 @@
 
 스프링부트와 Spring Data JPA를 이용하여 구현한 프로젝트의 백엔드 모듈개발 레파지토리입니다.
 
+[프로젝트 구성]
+1. Backend
+2. <a src="https://github.com/CSID-DGU/3S1C_frontend/tree/359ee640e65d83b68986a23eefa58104f1473afe"> front end</a> [sub module]
+3. <a src="https://github.com/LuneRemer/CrawlingModule_NaverNews.git"> clawling module</a> [sub module]
+
 산학연계 멘토 : 하 광림 기술사
 
 ## 1. 백엔드 개발 팀원 구성
