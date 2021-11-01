@@ -17,17 +17,17 @@
 
 <p><a href="https://github.com/LuneRemer">LuneRemer</a> <p>
 [담당]
-1. 데이터 분석관련 API설계/개발
-2. DB연동/DB문제점 수정
-3. 코드 리뷰/리팩토링 담당
+1. 데이터 분석관련 API설계/개발<br>
+2. DB연동/DB문제점 수정<br>
+3. 코드 리뷰/리팩토링 담당<br>
 4. How to 문서 작성
 
 <p><a href="https://github.com/SuHoTan">SuHoTan</a> <p>
 [담당]
-1.  전체 시스템 구조 설계
-2.  DB 최초 구조 설계
-3.  API 설계문서 작성
-4. 키워드 분석관련 API개발
+1.  전체 시스템 구조 설계<br>
+2.  DB 최초 구조 설계<br>
+3.  API 설계문서 작성<br>
+4. 키워드 분석관련 API개발<br>
 5. AWS Ec2 배포
 
 ## 2. 백엔드 개발환경
