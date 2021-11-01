@@ -5,25 +5,26 @@
 뉴스의 기사의 댓글들을 분석하여, 데이터 속에서 유의미한 결과를 시각화하여 보여주는 것이 목적인 프로젝트입니다. 
 
 이 레파지토리는 스프링부트와 Spring Data JPA를 이용하여 구현한 백엔드API 레파지토리입니다.
-<br>
-산학연계 멘토 : 하 광림 기술사
 
 [프로젝트 구성]
 1. Backend
 2. <a href="https://github.com/CSID-DGU/3S1C_frontend/tree/359ee640e65d83b68986a23eefa58104f1473afe"> front end</a> [sub module]
 3. <a href="https://github.com/LuneRemer/CrawlingModule_NaverNews.git"> clawling module</a> [sub module]
 
+<br>
+산학연계 멘토 : 하 광림 기술사
+
 ## 1. 백엔드 개발 팀원 구성
 
 <p><a href="https://github.com/LuneRemer">LuneRemer</a> <p>
-[담당]
+[담당]<br>
 1. 데이터 분석관련 API설계/개발<br>
 2. DB연동/DB문제점 수정<br>
 3. 코드 리뷰/리팩토링 담당<br>
 4. How to 문서 작성
 
 <p><a href="https://github.com/SuHoTan">SuHoTan</a> <p>
-[담당]
+[담당]<br>
 1.  전체 시스템 구조 설계<br>
 2.  DB 최초 구조 설계<br>
 3.  API 설계문서 작성<br>
