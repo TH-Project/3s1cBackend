@@ -29,7 +29,7 @@
 2.  DB 최초 구조 설계<br>
 3.  API 설계문서 작성<br>
 4. 키워드 분석관련 API개발<br>
-5. AWS Ec2 배포
+5. AWS Ec2 환경에서 프로젝트 배포
 
 ## 2. 백엔드 개발환경
 <blockquote> 
@@ -62,6 +62,13 @@
 <li>git</li>
 </ul>
 </blockquote>
+
+<blockquote> 
+<p> 배포환경 </p>
+</blockquote>
+<ul>
+<li>AWS Ec2</li>
+<li>linux</li>
 </ul>
 
 ## 3. 설계
