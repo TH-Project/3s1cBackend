@@ -59,7 +59,7 @@
 <p> 형상관리 </p>
 </blockquote>
 <ul>
-<li>Inteliji</li>
+<li>git</li>
 </ul>
 </blockquote>
 </ul>
