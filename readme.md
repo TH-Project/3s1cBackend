@@ -7,12 +7,9 @@
 이 레파지토리는 스프링부트와 Spring Data JPA를 이용하여 구현한 백엔드API 레파지토리입니다.
 
 [프로젝트 구성]
-1. Backend<br>
-- spring boot 기반
-3. <a href="https://github.com/CSID-DGU/3S1C_frontend/tree/359ee640e65d83b68986a23eefa58104f1473afe"> front end</a> [sub module]<br>
--Veu.js 기반
-4. <a href="https://github.com/LuneRemer/CrawlingModule_NaverNews.git"> clawling module</a> [sub module]<br>
--pythion 기반
+1. Backend<br> - spring boot 기반
+2. <a href="https://github.com/CSID-DGU/3S1C_frontend/tree/359ee640e65d83b68986a23eefa58104f1473afe"> front end</a> [sub module] -Veu.js 기반
+3. <a href="https://github.com/LuneRemer/CrawlingModule_NaverNews.git"> clawling module</a> [sub module] -python 기반
 
 <br>
 산학연계 멘토 : 하 광림 기술사
