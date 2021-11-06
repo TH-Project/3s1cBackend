@@ -85,6 +85,11 @@ public class KeywordService {
                 brefNews =  brefList.get(0);
             }
 
+            if (genderRatio.get("female") == 0.0 && genderRatio.get("male") == 0.0) {
+                genderRatio = newsService.findGenderRatioByBref(brefNews);
+                ageRatio = newsService.findAgeRatioByBref(brefNews);
+            }
+
             String keyword = keywordDto.getKeyword();
             int rank = keywordDto.getRanks();
             double positive = keywordDto.getPositive();

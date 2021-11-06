@@ -31,5 +31,10 @@ public interface NewsRepository extends JpaRepository<news, Integer>{
 
     @Query("select n.newsId from news n")
     List<Integer> findAllNewsId();
+
+    @Query("Select n.newsId from news n where n.brief_article = :brief order by n.date desc")
+    List<Integer> findNewsIdByBrief(@Param("brief") String brief);
+
+
 }
 
