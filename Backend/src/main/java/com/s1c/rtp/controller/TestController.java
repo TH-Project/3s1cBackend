@@ -61,4 +61,10 @@ public class TestController {
     public List<String> retrieveNewsIdByKeyword2(@PathVariable("keyword") String keyword) {
         return newsService.findNewsIdByKeyword2(keyword);
     }
+
+    @GetMapping("/real-time-popularity/latest-topics")
+    public List<Test4Dto> retrieveLatestTopics() {
+        return testService.findAllTest4dtoList();
+    }
+
 }

@@ -2,6 +2,7 @@ package com.s1c.rtp.service;
 
 import com.s1c.rtp.dto.Test2dto;
 import com.s1c.rtp.dto.Test3dto;
+import com.s1c.rtp.dto.Test4Dto;
 import com.s1c.rtp.entity.testentity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -216,6 +217,73 @@ public class TestService {
         Test3dto test3dto = new Test3dto(comment1, article1, sentiment, ranking);
 
         return test3dto;
+    }
+
+    @Transactional
+    public List<Test4Dto> findAllTest4dtoList() {
+
+        HashMap<String, Integer> rank1 = new HashMap<String, Integer>();
+        HashMap<String, Integer> rank2 = new HashMap<String, Integer>();
+        HashMap<String, Integer> rank3 = new HashMap<String, Integer>();
+
+        rank1.put("윤석열", 15);
+        rank1.put("후보", 14);
+        rank1.put("국민", 13);
+        rank1.put("조직", 12);
+        rank1.put("대장동", 11);
+        rank1.put("대통령", 10);
+        rank1.put("검사", 9);
+        rank1.put("날씨", 8);
+        rank1.put("비리", 7);
+        rank1.put("대한민국", 6);
+        rank1.put("양심", 5);
+        rank1.put("개인", 4);
+        rank1.put("정검", 3);
+        rank1.put("수석", 2);
+        rank1.put("공권력", 1);
+
+        rank2.put("국민", 15);
+        rank2.put("후보", 14);
+        rank2.put("윤석열", 13);
+        rank2.put("대장동", 12);
+        rank2.put("검사", 11);
+        rank2.put("홍준표", 10);
+        rank2.put("감옥", 9);
+        rank2.put("대통령", 8);
+        rank2.put("조사", 7);
+        rank2.put("경선", 6);
+        rank2.put("장모", 5);
+        rank2.put("정검", 4);
+        rank2.put("검사", 3);
+        rank2.put("공권력", 2);
+        rank2.put("중국", 1);
+
+        rank3.put("후보", 15);
+        rank3.put("대장동", 14);
+        rank3.put("윤석열", 13);
+        rank3.put("감옥", 12);
+        rank3.put("검사", 11);
+        rank3.put("이재명", 10);
+        rank3.put("조사", 9);
+        rank3.put("외교", 8);
+        rank3.put("탈원전", 7);
+        rank3.put("검사", 6);
+        rank3.put("대통령", 5);
+        rank3.put("국민", 4);
+        rank3.put("공권력", 3);
+        rank3.put("민주", 2);
+        rank3.put("수석", 1);
+
+        Test4Dto day1 = new Test4Dto(1, rank1);
+        Test4Dto day2 = new Test4Dto(2, rank2);
+        Test4Dto day3 = new Test4Dto(3, rank3);
+
+        List<Test4Dto> list = new ArrayList<>();
+        list.add(day1);
+        list.add(day2);
+        list.add(day3);
+
+        return list;
     }
 
 
