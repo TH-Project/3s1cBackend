@@ -101,8 +101,12 @@ public class NewsService {
 
         if(searchedNewsId.size() == 0) {
 
-            hashMap.put("male", 0.00);
-            hashMap.put("female", 0.00);
+            Page<String> pageBrefNews = findBriefNewsByKeyword(keyword);
+            List<String> brefList = pageBrefNews.getContent();
+            String brefNews =  brefList.get(0);
+
+            hashMap = findGenderRatioByBref(brefNews);
+
             return hashMap;
         }
 
@@ -163,12 +167,11 @@ public class NewsService {
         List<Integer> searchedNewsId = newsRepository.findNewsIdByKeyword(key);
 
         if(searchedNewsId.size() == 0) {
-            hashMap.put("10", 0.00);
-            hashMap.put("20", 0.00);
-            hashMap.put("30", 0.00);
-            hashMap.put("40", 0.00);
-            hashMap.put("50", 0.00);
-            hashMap.put("60", 0.00);
+            Page<String> pageBrefNews = findBriefNewsByKeyword(keyword);
+            List<String> brefList = pageBrefNews.getContent();
+            String brefNews =  brefList.get(0);
+
+            hashMap = findAgeRatioByBref(brefNews);
             return hashMap;
         }
 

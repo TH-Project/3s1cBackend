@@ -27,6 +27,7 @@ public interface KeywordRepository extends JpaRepository<keywords, Integer>{
     @Query("select new com.s1c.rtp.dto.NewsDto3(n.likes, n.sads, n.angries, n.warms) from news n where n.newsId = :news_id")
     NewsDto3 findKeywordNews(@Param("news_id") int news_id);
 
-
+    @Query("Select new  com.s1c.rtp.dto.SentimentDto (k.negative, k.positive) from keywords k where k.keyword = :keyword")
+    SentimentDto findSentimentByKeyword(@Param("keyword") String keyword);
 
 }

@@ -164,6 +164,14 @@ public class KeywordService {
         return new KeywordDto2(keyword, like, sad, angry, warm);
     }
 
+    public HashMap<String, Double> findSentimentByKeyword(String keyword) {
+        SentimentDto sentimentDto = keywordRepository.findSentimentByKeyword(keyword);
 
+        HashMap<String, Double> hashMap = new HashMap<>();
+        hashMap.put("negative", sentimentDto.getNegative());
+        hashMap.put("positive", sentimentDto.getPositive());
+
+        return hashMap;
+    }
 
 }

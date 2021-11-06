@@ -65,6 +65,11 @@ public class KeywordController {
         return newsService.findAgeRatioByKeyword(keyword);
     }
 
+    @GetMapping("/keywords/{keyword}/sentiment")
+    public HashMap<String, Double> getSentiment(@PathVariable("keyword") String keyword) {
+        return keywordService.findSentimentByKeyword(keyword);
+    }
+
     @GetMapping("/keywords/{keyword}/emoticon-analysis")
     public KeywordDto2 getKeywordEmoticon(@PathVariable("keyword") String keyword) {
         return keywordService.findKeywordEmoticon(keyword);
